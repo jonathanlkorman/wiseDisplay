@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { GameDAL } from '../dal/GameDAL.class';
+import { IApiGameAdapter } from '../api-adapters/IApiGame.adapter';
 import { IConfig } from '../schema/blueprints/IConfig';
 
 export class GameController {
@@ -18,7 +19,7 @@ export class GameController {
              
             const nflGames = await GameDAL.getNFLGames();
 
-            return res.status(200).json(nflGames);
+            return res.status(200).json(IApiGameAdapter(nflGames, config));
         } catch (error) {
             console.log(error);
             return res.sendStatus(400);
@@ -38,7 +39,7 @@ export class GameController {
 
             const games = [...nfl, ...nhl, ...nba, ...mlb];
 
-            return res.status(200).json(games);
+            return res.status(200).json(IApiGameAdapter(games, config));
         } catch (error) {
             console.log(error);
             return res.sendStatus(400);
