@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "start": "node dist/wisedisplay-be/src/server.js",
+    "build-start": "npm run build && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
