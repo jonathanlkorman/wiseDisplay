@@ -62,30 +62,38 @@ export class Game implements IGame {
         return this._isLive;
     }
 
-    public get displayDate(): {day: string, time: string} {
+    public get displayDate(): { day: string, time: string } {
         const currentDate: Date = new Date();
         const timestamp = Date.parse(this._date);
         const eventDate = new Date(timestamp);
-          
-        const dateFormatter = new Intl.DateTimeFormat('en-US', {month: 'short', day: 'numeric'});
-        const timeFormatter = new Intl.DateTimeFormat('en-US', {hour: 'numeric', minute: 'numeric', hour12: true});
-          
+    
+        const eventDateString = eventDate.toLocaleString('en-US', {
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+    
         if (
             eventDate.getFullYear() === currentDate.getFullYear() &&
             eventDate.getMonth() === currentDate.getMonth() &&
             eventDate.getDate() === currentDate.getDate()
         ) {
             return {
-                day: 'TODAY', 
-                time: timeFormatter.format(eventDate)
-            }
+                day: 'TODAY',
+                time: eventDateString.split(', ')[1] // Extract time
+            };
         } else {
+            const [day, time] = eventDateString.split(', ');
             return {
-                day: dateFormatter.format(eventDate), 
-                time: timeFormatter.format(eventDate)
-            }
+                day,
+                time
+            };
         }
     }
+    
 
     public includesFav(favTeams: string[]): boolean {
         return favTeams.includes(this.awayteam.teamName) || favTeams.includes(this.hometeam.teamName);
