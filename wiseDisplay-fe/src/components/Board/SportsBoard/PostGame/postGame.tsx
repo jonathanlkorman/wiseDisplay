@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import './postGame.css';
+import '../sportsBoard.css';
 import { IApiGame } from '../../../../../../wiseDisplay-api/interfaces/IApiGames';
 
 
@@ -20,14 +20,14 @@ const PostGame: FunctionComponent<PostGameData> = ({ gameData }) => {
                 <div className='away-team' style={{ backgroundColor: `#${gameData.awayteam.altcolor}` }}>
                     <img className='team-logo' src={gameData.awayteam.logo} alt='away-team-logo' />
                     <div className='team-info'>
-                        <p className='team-name'>{gameData.awayteam.teamFullName}</p>
+                        <p className='team-name'>{gameData.awayteam.teamShortName}</p>
                         <p className='score'>{gameData.awayteam.score}</p>
                     </div>
                 </div>
                 <div className='home-team' style={{ backgroundColor: `#${gameData.hometeam.color}` }}>
                     <img className='team-logo' src={gameData.hometeam.logo} alt='home-team-logo' />
                     <div className='team-info'>
-                        <p className='team-name'>{gameData.hometeam.teamFullName}</p>
+                        <p className='team-name'>{gameData.hometeam.teamShortName}</p>
                         <p className='score'>{gameData.hometeam.score}</p>
                     </div>
                 </div>

@@ -1,0 +1,65 @@
+.game-status {
+    color: #aa1e1e;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    font-size: 8vw;
+}
+
+.matchup-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+}
+
+.home-team,.away-team {
+    padding-left: 2rem;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    align-items: center;
+    text-align: left;
+    font-size: 8vw;
+    gap: 10%;
+}
+
+.team-logo-wrapper {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-logo {
+    width: 100%;
+    object-fit: contain;
+}
+
+.team-info {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-name {
+    font-size: 8vw;
+}
+
+.team-record {
+    font-size: 6vw;
+}
+
+.score {
+    font-size: 6vw;
+}
