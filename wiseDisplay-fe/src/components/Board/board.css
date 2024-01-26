@@ -1,0 +1,6 @@
+.board-wrapper {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(232, 239, 236);
+    display: flex;
+}
