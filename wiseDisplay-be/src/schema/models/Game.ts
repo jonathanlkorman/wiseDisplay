@@ -96,6 +96,6 @@ export class Game implements IGame {
     
 
     public includesFav(favTeams: string[]): boolean {
-        return favTeams.includes(this.awayteam.teamName) || favTeams.includes(this.hometeam.teamName);
+        return favTeams.includes(this.awayteam.teamShortName) || favTeams.includes(this.hometeam.teamShortName);
     };
 }

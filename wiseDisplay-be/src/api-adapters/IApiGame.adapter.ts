@@ -20,18 +20,22 @@ export const IApiGameAdapter = (games: Game[], config: IConfig): IApiGames => {
             name: game.name,
             date: game.displayDate,
             hometeam: {
-                teamName: game.hometeam.teamName,
+                teamShortName: game.hometeam.teamShortName,
+                teamFullName: game.hometeam.teamFullName,
                 id: game.hometeam.id,
                 score: game.hometeam.score,
                 color: game.hometeam.color,
+                logo: game.hometeam.logo,
                 altcolor: game.hometeam.altcolor,
                 record: game.hometeam.record
             },
             awayteam:{
-                teamName: game.awayteam.teamName,
+                teamShortName: game.awayteam.teamShortName,
+                teamFullName: game.awayteam.teamFullName,
                 id: game.awayteam.id,
                 score: game.awayteam.score,
                 color: game.awayteam.color,
+                logo: game.awayteam.logo,
                 altcolor: game.awayteam.altcolor,
                 record: game.awayteam.record
             },

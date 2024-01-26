@@ -13,10 +13,12 @@ export interface IGame {
 }
 
 export interface ITeam {
-    teamName: string, 
+    teamShortName: string, 
+    teamFullName: string, 
     id: string, 
     score: number,
     color: string, 
+    logo: string,
     altcolor: string,
     record?: string, 
 }

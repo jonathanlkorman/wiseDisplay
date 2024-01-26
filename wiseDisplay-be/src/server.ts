@@ -3,6 +3,7 @@ import http from 'http';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import * as dotenv from "dotenv";
+import cors from 'cors';
 
 import { router } from './routes';
 
@@ -12,6 +13,7 @@ const app: Application = express();
 
 const port = process.env.PORT || 8080;
 
+app.use(cors());
 
 app.use(compression());
 app.use(bodyParser());
