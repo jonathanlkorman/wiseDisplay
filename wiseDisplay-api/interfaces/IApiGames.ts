@@ -44,11 +44,11 @@ export interface IApiMLBInfo {
 }
 
 export interface IApiNBAInfo {
-    quarter: number
+    quarter: string
 }
 
 export interface IApiNHLInfo {
-    period: number
+    period: string
 }
 
 export type IApiGameInfo = IApiMLBInfo | IApiNFLInfo | IApiNBAInfo | IApiNHLInfo;

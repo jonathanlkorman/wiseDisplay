@@ -13,4 +13,9 @@ export class NBAGame extends Game implements INBAGame {
         return this._quarter;
     }
 
+    public get displayQuarter(): string {
+        const ORDINAL = ['Pre', '1st', '2nd', '3rd', '4th', 'OT'];
+        return ORDINAL[this._quarter];
+    }
+
 }

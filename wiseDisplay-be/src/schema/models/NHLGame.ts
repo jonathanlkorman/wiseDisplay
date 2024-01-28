@@ -13,4 +13,9 @@ export class NHLGame extends Game implements INHLGame {
         return this._period;
     }
 
+    public get displayPeriod(): string {
+        const ORDINAL = ['Pre', '1st', '2nd', '3rd', 'OT'];
+        return ORDINAL[this.period];
+    }
+
 }

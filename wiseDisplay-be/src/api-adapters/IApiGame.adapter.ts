@@ -85,12 +85,12 @@ const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
     }
     else if(game instanceof NBAGame) {
         return {
-            quarter: game.quarter
+            quarter: game.displayQuarter
         }
     }
     else if(game instanceof NHLGame) {
         return { 
-            period: game.period 
+            period: game.displayPeriod 
         }
     }
 }
