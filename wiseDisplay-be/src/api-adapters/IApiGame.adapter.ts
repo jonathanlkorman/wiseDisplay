@@ -7,14 +7,19 @@ import { NHLGame } from "../schema/models/NHLGame";
 import { MLBGame } from "../schema/models/MLBGame";
 
 export const IApiGameAdapter = (games: Game[], config: IConfig): IApiGames => {
+
     const preferredTeamsLive: boolean = games
         .filter(game => game.includesFav(config.favTeams))
         .some(game => game.isLive);
+        
+    const anyGamesLive: boolean = games
+    .filter(game => config.leagues.includes(game.league))
+    .some(game => game.isLive);
 
     const filteredGames: IApiGame[] = games
-        .filter(game => config.liveOnly && preferredTeamsLive ? game.isLive : true)
+        .filter(game => (config.liveOnly && anyGamesLive) ? game.isLive : true)
         .filter(game => config.leagues.includes(game.league))
-        .filter(game => config.favTeamsOnly ? game.includesFav(config.favTeams) : true)
+        .filter(game => (config.favTeamsOnly && preferredTeamsLive) ? game.includesFav(config.favTeams) && game.isLive : true)
         .map(game =>({
             league: game.league,
             name: game.name,
