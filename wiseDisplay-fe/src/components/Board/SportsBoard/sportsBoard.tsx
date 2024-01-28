@@ -46,7 +46,13 @@ const SportsBoard = () => {
         const startInterval = () => {
             intervalRef.current = setInterval(() => {
                 // Move to the next game or loop back to the first game
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % gameData.filteredGames.length);
+                setCurrentIndex((prevIndex) => {
+                    const nextIndex = (prevIndex + 1) % gameData.filteredGames.length;
+                    if (nextIndex === 0) {
+                        fetchData();
+                    }
+                    return nextIndex;
+                });
             }, 10000); // 10 seconds interval
         };
 
