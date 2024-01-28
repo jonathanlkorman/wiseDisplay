@@ -1,10 +1,15 @@
+@font-face {
+    font-family: seven-segment;
+    src: url(seven-segment.ttf);
+  }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     background: transparent;
-    font-family: 'Poppins', sans-serif;
+    font-family: seven-segment, sans-serif;
 }
 
 body {

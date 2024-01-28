@@ -1,8 +1,8 @@
 import './sportsBoard.css';
 import React, { useState, useEffect, useRef } from 'react';
-import PreGame from './PreGame/preGame';
-import PostGame from './PostGame/postGame';
 import { IApiGames } from '../../../../../wiseDisplay-api/interfaces/IApiGames';
+import GameInfo from './Game/GameInfo/gameInfo';
+import Matchup from './Game/matchup';
 
 const SportsBoard = () => {
     const [gameData, setGameData] = useState<IApiGames>({
@@ -15,7 +15,6 @@ const SportsBoard = () => {
 
     const fetchData = async () => {
         try {
-            console.log('fetching')
             const response = await fetch('http://localhost:8080/api/games/all', {
                     method: 'POST',
                     headers: {
@@ -77,12 +76,8 @@ const SportsBoard = () => {
 
     return (
         <>
-            {gameData.filteredGames[currentIndex].state === 'pre'
-                ? <PreGame gameData={gameData.filteredGames[currentIndex]} />
-                : <PostGame gameData={gameData.filteredGames[currentIndex]} />
-            
-            }
-            
+            <GameInfo gameData={gameData.filteredGames[currentIndex]}/>
+            <Matchup gameData={gameData.filteredGames[currentIndex]}/>
         </>
     );
 };

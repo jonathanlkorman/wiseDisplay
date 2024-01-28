@@ -9,7 +9,7 @@
     justify-content: center;
     height: 100%;
     width: 40%;
-    font-size: 8vw;
+    font-size: 9.5vw;
 }
 
 .matchup-info {
@@ -19,7 +19,7 @@
     width: 60%;
 }
 
-.home-team,.away-team {
+.team {
     padding-left: 2rem;
     width: 100%;
     height: 50%;
@@ -28,7 +28,6 @@
     color: #fff;
     align-items: center;
     text-align: left;
-    font-size: 8vw;
     gap: 10%;
 }
 
@@ -42,6 +41,8 @@
 .team-logo {
     width: 100%;
     object-fit: contain;
+    -webkit-filter: drop-shadow(2px 2px 0 black) drop-shadow(-2px -2px 0 black);
+    filter: drop-shadow(2px 2px 0 black) drop-shadow(-2px -2px 0 black);
 }
 
 .team-info {
@@ -53,13 +54,16 @@
 }
 
 .team-name {
-    font-size: 8vw;
+    font-size: 10vw;
+    letter-spacing: 3px;
 }
 
 .team-record {
-    font-size: 6vw;
+    font-size: 7vw;
+    letter-spacing: 4px;
 }
 
 .score {
-    font-size: 6vw;
+    font-size: 8vw;
+    letter-spacing: 6px;
 }
