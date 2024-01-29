@@ -9,10 +9,14 @@
     justify-content: center;
     height: 100%;
     width: 40%;
-    font-size: 9.5vw;
+    font-size: 9vw;
 }
 
-.matchup-info {
+.down-and-distance {
+    font-size: 8vw;
+}
+
+.matchup {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -25,7 +29,6 @@
     height: 50%;
     display: flex;
     flex-direction: row;
-    color: #fff;
     align-items: center;
     text-align: left;
     gap: 10%;
@@ -66,4 +69,35 @@
 .score {
     font-size: 8vw;
     letter-spacing: 6px;
+}
+
+.timeouts {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10%;
+}
+
+.timeout {
+    margin-top: 2rem;
+    width: 20%;
+    height: 10px;
+}
+
+.possession {
+    width: 50px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.possession-away {
+    top: 25%;
+    right: 5%;
+}
+
+.possession-home {
+    top: 75%;
+    right: 5%; 
 }

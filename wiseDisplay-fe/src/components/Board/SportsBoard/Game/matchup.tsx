@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import '../sportsBoard.css';
-import { IApiGame } from '../../../../../../wiseDisplay-api/interfaces/IApiGames';
+import { IApiGame, IApiNFLInfo } from '../../../../../../wiseDisplay-api/interfaces/IApiGames';
 import { ITeam } from '../../../../../../wiseDisplay-be/src/schema/blueprints/IGame';
 
 
@@ -13,7 +13,14 @@ interface TeamProps {
     team: ITeam;
     backgroundColor?: string;
     textColor: string;
-    state: string;
+    gameData: IApiGame;
+    isHomeTeam: boolean;
+}
+
+interface MatchupInfoProps {
+    gameData: IApiGame;
+    isHomeTeam: boolean;
+    textColor: string;
 }
 
 function getContrastingTextColor(backgroundColor: string): string {
@@ -68,24 +75,27 @@ function getMostDifferentColor(mainColor: string, color1: string, color2: string
 const Matchup: FunctionComponent<MatchupData> = ({ gameData }) => {
 
     const awayTeamColor = getMostDifferentColor(
-        gameData.hometeam.color, 
-        gameData.awayteam.color, 
+        gameData.hometeam.color,
+        gameData.awayteam.color,
         gameData.awayteam.altcolor
     );
 
     return (
-        <div className='matchup-info'>
+        <div className='matchup'>
             <Team
                 team={gameData.awayteam}
                 backgroundColor={`#${awayTeamColor}`}
                 textColor={getContrastingTextColor(awayTeamColor)}
-                state={gameData.state}
+                gameData={gameData}
+                isHomeTeam={false}
+
             />
             <Team
                 team={gameData.hometeam}
                 backgroundColor={`#${gameData.hometeam.color}`}
                 textColor={getContrastingTextColor(gameData.hometeam.color)}
-                state={gameData.state}
+                gameData={gameData}
+                isHomeTeam={true}
             />
         </div>
     )
@@ -94,28 +104,69 @@ const Matchup: FunctionComponent<MatchupData> = ({ gameData }) => {
 export default Matchup;
 
 
-const Team: FunctionComponent<TeamProps> = ({ team, backgroundColor, textColor, state }) => (
+const Team: FunctionComponent<TeamProps> = ({ team, backgroundColor, textColor, gameData, isHomeTeam }) => (
     <div className='team' style={{ backgroundColor }}>
         <div className='team-logo-wrapper'>
             <img className='team-logo' src={team.logo} alt={`${team.teamShortName}-logo`} />
         </div>
-        <TeamInfo team={team} textColor={textColor} state={state} />
+        <TeamInfo team={team} textColor={textColor} gameData={gameData} isHomeTeam={isHomeTeam} />
     </div>
 );
 
-const TeamInfo: FunctionComponent<TeamProps> = ({ team, textColor, state }) => (
+const TeamInfo: FunctionComponent<TeamProps> = ({ team, textColor, gameData, isHomeTeam }) => (
     <div className='team-info'>
         <p className='team-name' style={{ color: textColor }}>
             {team.teamShortName}
         </p>
-        {state === 'pre' ? (
+        {gameData.state === 'pre' ? (
             <p className='team-record' style={{ color: textColor }}>
                 {team.record}
             </p>
         ) : (
-            <p className='score' style={{ color: textColor }}>
-                {team.score}
-            </p>
+            <>
+                <p className='score' style={{ color: textColor }}>
+                    {team.score}
+                </p>
+                <MatchupInfo gameData={gameData} isHomeTeam={isHomeTeam} textColor={textColor} />
+            </>
         )}
     </div>
 );
+
+const MatchupInfo: FunctionComponent<MatchupInfoProps> = ({ gameData, isHomeTeam, textColor }) => {
+    switch (gameData.league) {
+        case 'NFL':
+            const gameInfo = gameData.gameInfo as IApiNFLInfo;
+            const timeouts = [];
+            let possession;
+            if (isHomeTeam) {
+                if (gameInfo.homeTimeouts) {
+                    for (let i = 0; i < gameInfo.homeTimeouts; i++) {
+                        timeouts.push(<div className='timeout' style={{ backgroundColor: textColor }} key={i}></div>)
+                    }
+                }
+                if (gameInfo.possession === gameData.hometeam.teamShortName) {
+                    possession = <div className='possession possession-home' style={{ backgroundColor: textColor }}></div>
+                }
+
+            } else {
+                if (gameInfo.awayTimeouts) {
+                    for (let i = 0; i < gameInfo.awayTimeouts; i++) {
+                        timeouts.push(<div className='timeout' style={{ backgroundColor: textColor }} key={i}></div>)
+                    }
+
+                }
+                if (gameInfo.possession === gameData.awayteam.teamShortName) {
+                    possession = <div className='possession possession-away' style={{ backgroundColor: textColor }}></div>
+                }
+            }
+            return (
+                <>
+                    {timeouts.length ? <div className='timeouts'>{timeouts}</div> : null}
+                    {possession ? possession : null}
+                </>
+            );
+        default:
+            return null;
+    }
+};
