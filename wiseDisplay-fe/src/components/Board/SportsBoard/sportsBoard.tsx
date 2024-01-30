@@ -13,6 +13,13 @@ const SportsBoard = () => {
     const [loading, setLoading] = useState(true);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+    const preloadImages = (urls: string[]) => {
+        urls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+        });
+    };
+
     const fetchData = async () => {
         try {
             const response = await fetch('https://wisedisplay-be.onrender.com/api/games/all', {
@@ -23,7 +30,7 @@ const SportsBoard = () => {
                     body: JSON.stringify({
                         liveOnly: true,
                         favTeamsOnly: false,
-                        favTeams: ["NYJ", "NYI", "NYM"],
+                        favTeams: [],
                         leagues: ["NHL", "NFL", "NBA"],
                     }),
                 });
@@ -35,17 +42,18 @@ const SportsBoard = () => {
 
             const data: IApiGames = await response.json();
             setGameData(data);
-            setLoading(false); // Set loading to false once data is fetched
+            preloadImages(data.filteredGames.map(game => game.awayteam.logo));
+            preloadImages(data.filteredGames.map(game => game.hometeam.logo));  
+            setLoading(false);
         } catch (error) {
             console.error('Error fetching data:', error);
-            setLoading(false); // Set loading to false in case of an error
+            setLoading(false);
         }
     };
 
     useEffect(() => {
         const startInterval = () => {
             intervalRef.current = setInterval(() => {
-                // Move to the next game or loop back to the first game
                 setCurrentIndex((prevIndex) => {
                     const nextIndex = (prevIndex + 1) % gameData.filteredGames.length;
                     if (nextIndex === 0) {
@@ -53,7 +61,7 @@ const SportsBoard = () => {
                     }
                     return nextIndex;
                 });
-            }, 10000); // 10 seconds interval
+            }, 10000);
         };
 
         const stopInterval = () => {
@@ -62,19 +70,16 @@ const SportsBoard = () => {
               }
         };
 
-        // Initial fetch on page load
         fetchData();
 
-        // Start the interval when gameData is available and not loading
         if (gameData.filteredGames.length > 0 && !loading) {
             startInterval();
         }
 
-        // Cleanup function to clear the interval if the component is unmounted
         return () => {
             stopInterval();
         };
-    }, [gameData.filteredGames.length, loading]); // Include gameData.length and loading as dependencies
+    }, [gameData.filteredGames.length, loading]);
 
     if (loading) {
         return <p>Loading...</p>;
