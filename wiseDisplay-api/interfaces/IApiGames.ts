@@ -8,10 +8,7 @@ export interface IApiGames {
 export interface IApiGame {
     league: string,
     name: string,
-    date: {
-        day: string, 
-        time: string
-    },
+    date: string,
     hometeam: ITeam,
     awayteam: ITeam,
     time: string,

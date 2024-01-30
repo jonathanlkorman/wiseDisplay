@@ -23,7 +23,7 @@ export const IApiGameAdapter = (games: Game[], config: IConfig): IApiGames => {
         .map(game =>({
             league: game.league,
             name: game.name,
-            date: game.displayDate,
+            date: game.date,
             hometeam: {
                 teamShortName: game.hometeam.teamShortName,
                 teamFullName: game.hometeam.teamFullName,

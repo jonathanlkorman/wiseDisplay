@@ -60,40 +60,7 @@ export class Game implements IGame {
     }
     public get isLive(): boolean {
         return this._isLive;
-    }
-
-    public get displayDate(): { day: string, time: string } {
-        const currentDate: Date = new Date();
-        const timestamp = Date.parse(this._date);
-        const eventDate = new Date(timestamp);
-    
-        const eventDateString = eventDate.toLocaleString('en-US', {
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-            month: 'short',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-        });
-    
-        if (
-            eventDate.getFullYear() === currentDate.getFullYear() &&
-            eventDate.getMonth() === currentDate.getMonth() &&
-            eventDate.getDate() === currentDate.getDate()
-        ) {
-            return {
-                day: 'TODAY',
-                time: eventDateString.split(', ')[1] // Extract time
-            };
-        } else {
-            const [day, time] = eventDateString.split(', ');
-            return {
-                day,
-                time
-            };
-        }
-    }
-    
+    }    
 
     public includesFav(favTeams: string[]): boolean {
         return favTeams.includes(this.awayteam.teamFullName) || favTeams.includes(this.hometeam.teamFullName);
