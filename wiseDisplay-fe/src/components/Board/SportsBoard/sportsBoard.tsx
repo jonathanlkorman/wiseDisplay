@@ -15,7 +15,7 @@ const SportsBoard = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/games/all', {
+            const response = await fetch('https://wisedisplay-be.onrender.com/api/games/all', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
