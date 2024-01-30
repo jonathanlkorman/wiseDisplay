@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
 import '../../sportsBoard.css';
-import { IApiGame, IApiMLBInfo } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
+import { IApiGame } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 
 
 interface MLBInfoData {
@@ -9,7 +9,7 @@ interface MLBInfoData {
 }
 
 const MLBInfo: FunctionComponent<MLBInfoData> = ({ gameData }) => {
-    const gameInfo = gameData.gameInfo as IApiMLBInfo;
+    // const gameInfo = gameData.gameInfo as IApiMLBInfo;
     return (
         <div className='game-info'>
            
