@@ -1,5 +1,5 @@
 import './sportsBoard.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { IApiGames } from '../../../../../wiseDisplay-api/interfaces/IApiGames';
 import GameInfo from './Game/GameInfo/gameInfo';
 import Matchup from './Game/matchup';
@@ -20,7 +20,7 @@ const SportsBoard = () => {
         });
     };
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
             const response = await fetch('https://wisedisplay-be.onrender.com/api/games/all', {
                     method: 'POST',
@@ -49,7 +49,7 @@ const SportsBoard = () => {
             console.error('Error fetching data:', error);
             setLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         const startInterval = () => {
@@ -79,7 +79,7 @@ const SportsBoard = () => {
         return () => {
             stopInterval();
         };
-    }, [gameData.filteredGames.length, loading]);
+    }, [fetchData, gameData.filteredGames.length, loading]);
 
     if (loading) {
         return <p>Loading...</p>;
