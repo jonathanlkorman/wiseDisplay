@@ -86,7 +86,7 @@ const Matchup: FunctionComponent<MatchupData> = ({ gameData }) => {
         <div className='matchup'>
             <Team
                 team={gameData.awayteam}
-                backgroundColor={`#${awayTeamColor}`}
+                backgroundColor={`#${awayTeamColor ? awayTeamColor : 'e8efec'}`}
                 textColor={getContrastingTextColor(awayTeamColor)}
                 gameData={gameData}
                 isHomeTeam={false}
@@ -94,7 +94,7 @@ const Matchup: FunctionComponent<MatchupData> = ({ gameData }) => {
             />
             <Team
                 team={gameData.hometeam}
-                backgroundColor={`#${gameData.hometeam.color}`}
+                backgroundColor={`#${gameData.hometeam.color ? gameData.hometeam.color : 'e8efec'}`}
                 textColor={getContrastingTextColor(gameData.hometeam.color)}
                 gameData={gameData}
                 isHomeTeam={true}
