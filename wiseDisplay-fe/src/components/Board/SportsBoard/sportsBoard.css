@@ -101,3 +101,18 @@
     top: 75%;
     right: 5%; 
 }
+
+/* baseball */
+.outs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.out {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid black;
+}
