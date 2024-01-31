@@ -24,6 +24,7 @@ interface MatchupInfoProps {
 }
 
 function getContrastingTextColor(backgroundColor: string): string {
+    if(!backgroundColor) return '#000000';
 
     backgroundColor = backgroundColor.replace('#', '');
 
@@ -37,7 +38,8 @@ function getContrastingTextColor(backgroundColor: string): string {
 }
 
 function getMostDifferentColor(mainColor: string, color1: string, color2: string): string {
-
+    if(!mainColor || !color1 || !color2) return "";
+    
     mainColor = mainColor.replace('#', '');
     color1 = color1.replace('#', '');
     color2 = color2.replace('#', '');
