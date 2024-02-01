@@ -1,25 +1,25 @@
 import { Game } from "../schema/models/Game";
-import { IConfig } from "../schema/blueprints/IConfig";
+import { IPreferences } from "../../../wiseDisplay-api/interfaces/IApiPreferences";
 import { IApiGames, IApiGame, IApiGameInfo } from "../../../wiseDisplay-api/interfaces/IApiGames";
 import { NFLGame } from "../schema/models/NFLGame";
 import { NBAGame } from "../schema/models/NBAGame";
 import { NHLGame } from "../schema/models/NHLGame";
 import { MLBGame } from "../schema/models/MLBGame";
 
-export const IApiGameAdapter = (games: Game[], config: IConfig): IApiGames => {
+export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiGames => {
 
     const preferredTeamsLive: boolean = games
-        .filter(game => game.includesFav(config.favTeams))
+        .filter(game => game.includesFav(preferences.favTeams))
         .some(game => game.isLive);
         
     const anyGamesLive: boolean = games
-    .filter(game => config.leagues.includes(game.league))
+    .filter(game => preferences.leagues.includes(game.league))
     .some(game => game.isLive);
 
     const filteredGames: IApiGame[] = games
-        .filter(game => (config.liveOnly && anyGamesLive) ? game.isLive : true)
-        .filter(game => config.leagues.includes(game.league))
-        .filter(game => (config.favTeamsOnly && preferredTeamsLive) ? game.includesFav(config.favTeams) && game.isLive : true)
+        .filter(game => (preferences.liveOnly && anyGamesLive) ? game.isLive : true)
+        .filter(game => preferences.leagues.includes(game.league))
+        .filter(game => (preferences.favTeamsOnly && preferredTeamsLive) ? game.includesFav(preferences.favTeams) && game.isLive : true)
         .map(game =>({
             league: game.league,
             name: game.name,

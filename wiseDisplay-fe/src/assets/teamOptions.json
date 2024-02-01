@@ -1,0 +1,498 @@
+[
+    {
+        "value": "Anaheim Ducks",
+        "label": "Anaheim Ducks"
+    },
+    {
+        "value": "Arizona Cardinals",
+        "label": "Arizona Cardinals"
+    },
+    {
+        "value": "Arizona Coyotes",
+        "label": "Arizona Coyotes"
+    },
+    {
+        "value": "Arizona Diamondbacks",
+        "label": "Arizona Diamondbacks"
+    },
+    {
+        "value": "Atlanta Braves",
+        "label": "Atlanta Braves"
+    },
+    {
+        "value": "Atlanta Falcons",
+        "label": "Atlanta Falcons"
+    },
+    {
+        "value": "Atlanta Hawks",
+        "label": "Atlanta Hawks"
+    },
+    {
+        "value": "Baltimore Orioles",
+        "label": "Baltimore Orioles"
+    },
+    {
+        "value": "Baltimore Ravens",
+        "label": "Baltimore Ravens"
+    },
+    {
+        "value": "Boston Bruins",
+        "label": "Boston Bruins"
+    },
+    {
+        "value": "Boston Celtics",
+        "label": "Boston Celtics"
+    },
+    {
+        "value": "Boston Red Sox",
+        "label": "Boston Red Sox"
+    },
+    {
+        "value": "Brooklyn Nets",
+        "label": "Brooklyn Nets"
+    },
+    {
+        "value": "Buffalo Bills",
+        "label": "Buffalo Bills"
+    },
+    {
+        "value": "Buffalo Sabres",
+        "label": "Buffalo Sabres"
+    },
+    {
+        "value": "Calgary Flames",
+        "label": "Calgary Flames"
+    },
+    {
+        "value": "Carolina Hurricanes",
+        "label": "Carolina Hurricanes"
+    },
+    {
+        "value": "Carolina Panthers",
+        "label": "Carolina Panthers"
+    },
+    {
+        "value": "Charlotte Hornets",
+        "label": "Charlotte Hornets"
+    },
+    {
+        "value": "Chicago Bears",
+        "label": "Chicago Bears"
+    },
+    {
+        "value": "Chicago Blackhawks",
+        "label": "Chicago Blackhawks"
+    },
+    {
+        "value": "Chicago Bulls",
+        "label": "Chicago Bulls"
+    },
+    {
+        "value": "Chicago Cubs",
+        "label": "Chicago Cubs"
+    },
+    {
+        "value": "Chicago White Sox",
+        "label": "Chicago White Sox"
+    },
+    {
+        "value": "Cincinnati Bengals",
+        "label": "Cincinnati Bengals"
+    },
+    {
+        "value": "Cincinnati Reds",
+        "label": "Cincinnati Reds"
+    },
+    {
+        "value": "Cleveland Browns",
+        "label": "Cleveland Browns"
+    },
+    {
+        "value": "Cleveland Cavaliers",
+        "label": "Cleveland Cavaliers"
+    },
+    {
+        "value": "Cleveland Guardians",
+        "label": "Cleveland Guardians"
+    },
+    {
+        "value": "Colorado Avalanche",
+        "label": "Colorado Avalanche"
+    },
+    {
+        "value": "Colorado Rockies",
+        "label": "Colorado Rockies"
+    },
+    {
+        "value": "Columbus Blue Jackets",
+        "label": "Columbus Blue Jackets"
+    },
+    {
+        "value": "Dallas Cowboys",
+        "label": "Dallas Cowboys"
+    },
+    {
+        "value": "Dallas Mavericks",
+        "label": "Dallas Mavericks"
+    },
+    {
+        "value": "Dallas Stars",
+        "label": "Dallas Stars"
+    },
+    {
+        "value": "Denver Broncos",
+        "label": "Denver Broncos"
+    },
+    {
+        "value": "Denver Nuggets",
+        "label": "Denver Nuggets"
+    },
+    {
+        "value": "Detroit Lions",
+        "label": "Detroit Lions"
+    },
+    {
+        "value": "Detroit Pistons",
+        "label": "Detroit Pistons"
+    },
+    {
+        "value": "Detroit Red Wings",
+        "label": "Detroit Red Wings"
+    },
+    {
+        "value": "Detroit Tigers",
+        "label": "Detroit Tigers"
+    },
+    {
+        "value": "Edmonton Oilers",
+        "label": "Edmonton Oilers"
+    },
+    {
+        "value": "Florida Panthers",
+        "label": "Florida Panthers"
+    },
+    {
+        "value": "Golden State Warriors",
+        "label": "Golden State Warriors"
+    },
+    {
+        "value": "Green Bay Packers",
+        "label": "Green Bay Packers"
+    },
+    {
+        "value": "Houston Astros",
+        "label": "Houston Astros"
+    },
+    {
+        "value": "Houston Rockets",
+        "label": "Houston Rockets"
+    },
+    {
+        "value": "Houston Texans",
+        "label": "Houston Texans"
+    },
+    {
+        "value": "Indiana Pacers",
+        "label": "Indiana Pacers"
+    },
+    {
+        "value": "Indianapolis Colts",
+        "label": "Indianapolis Colts"
+    },
+    {
+        "value": "Jacksonville Jaguars",
+        "label": "Jacksonville Jaguars"
+    },
+    {
+        "value": "Kansas City Chiefs",
+        "label": "Kansas City Chiefs"
+    },
+    {
+        "value": "Kansas City Royals",
+        "label": "Kansas City Royals"
+    },
+    {
+        "value": "LA Clippers",
+        "label": "LA Clippers"
+    },
+    {
+        "value": "Las Vegas Raiders",
+        "label": "Las Vegas Raiders"
+    },
+    {
+        "value": "Los Angeles Angels",
+        "label": "Los Angeles Angels"
+    },
+    {
+        "value": "Los Angeles Chargers",
+        "label": "Los Angeles Chargers"
+    },
+    {
+        "value": "Los Angeles Dodgers",
+        "label": "Los Angeles Dodgers"
+    },
+    {
+        "value": "Los Angeles Kings",
+        "label": "Los Angeles Kings"
+    },
+    {
+        "value": "Los Angeles Lakers",
+        "label": "Los Angeles Lakers"
+    },
+    {
+        "value": "Los Angeles Rams",
+        "label": "Los Angeles Rams"
+    },
+    {
+        "value": "Memphis Grizzlies",
+        "label": "Memphis Grizzlies"
+    },
+    {
+        "value": "Miami Dolphins",
+        "label": "Miami Dolphins"
+    },
+    {
+        "value": "Miami Heat",
+        "label": "Miami Heat"
+    },
+    {
+        "value": "Miami Marlins",
+        "label": "Miami Marlins"
+    },
+    {
+        "value": "Milwaukee Brewers",
+        "label": "Milwaukee Brewers"
+    },
+    {
+        "value": "Milwaukee Bucks",
+        "label": "Milwaukee Bucks"
+    },
+    {
+        "value": "Minnesota Timberwolves",
+        "label": "Minnesota Timberwolves"
+    },
+    {
+        "value": "Minnesota Twins",
+        "label": "Minnesota Twins"
+    },
+    {
+        "value": "Minnesota Vikings",
+        "label": "Minnesota Vikings"
+    },
+    {
+        "value": "Minnesota Wild",
+        "label": "Minnesota Wild"
+    },
+    {
+        "value": "Montreal Canadiens",
+        "label": "Montreal Canadiens"
+    },
+    {
+        "value": "Nashville Predators",
+        "label": "Nashville Predators"
+    },
+    {
+        "value": "New England Patriots",
+        "label": "New England Patriots"
+    },
+    {
+        "value": "New Jersey Devils",
+        "label": "New Jersey Devils"
+    },
+    {
+        "value": "New Orleans Pelicans",
+        "label": "New Orleans Pelicans"
+    },
+    {
+        "value": "New Orleans Saints",
+        "label": "New Orleans Saints"
+    },
+    {
+        "value": "New York Giants",
+        "label": "New York Giants"
+    },
+    {
+        "value": "New York Islanders",
+        "label": "New York Islanders"
+    },
+    {
+        "value": "New York Jets",
+        "label": "New York Jets"
+    },
+    {
+        "value": "New York Knicks",
+        "label": "New York Knicks"
+    },
+    {
+        "value": "New York Mets",
+        "label": "New York Mets"
+    },
+    {
+        "value": "New York Rangers",
+        "label": "New York Rangers"
+    },
+    {
+        "value": "New York Yankees",
+        "label": "New York Yankees"
+    },
+    {
+        "value": "Oakland Athletics",
+        "label": "Oakland Athletics"
+    },
+    {
+        "value": "Oklahoma City Thunder",
+        "label": "Oklahoma City Thunder"
+    },
+    {
+        "value": "Orlando Magic",
+        "label": "Orlando Magic"
+    },
+    {
+        "value": "Ottawa Senators",
+        "label": "Ottawa Senators"
+    },
+    {
+        "value": "Philadelphia 76ers",
+        "label": "Philadelphia 76ers"
+    },
+    {
+        "value": "Philadelphia Eagles",
+        "label": "Philadelphia Eagles"
+    },
+    {
+        "value": "Philadelphia Flyers",
+        "label": "Philadelphia Flyers"
+    },
+    {
+        "value": "Philadelphia Phillies",
+        "label": "Philadelphia Phillies"
+    },
+    {
+        "value": "Phoenix Suns",
+        "label": "Phoenix Suns"
+    },
+    {
+        "value": "Pittsburgh Penguins",
+        "label": "Pittsburgh Penguins"
+    },
+    {
+        "value": "Pittsburgh Pirates",
+        "label": "Pittsburgh Pirates"
+    },
+    {
+        "value": "Pittsburgh Steelers",
+        "label": "Pittsburgh Steelers"
+    },
+    {
+        "value": "Portland Trail Blazers",
+        "label": "Portland Trail Blazers"
+    },
+    {
+        "value": "Sacramento Kings",
+        "label": "Sacramento Kings"
+    },
+    {
+        "value": "San Antonio Spurs",
+        "label": "San Antonio Spurs"
+    },
+    {
+        "value": "San Diego Padres",
+        "label": "San Diego Padres"
+    },
+    {
+        "value": "San Francisco 49ers",
+        "label": "San Francisco 49ers"
+    },
+    {
+        "value": "San Francisco Giants",
+        "label": "San Francisco Giants"
+    },
+    {
+        "value": "San Jose Sharks",
+        "label": "San Jose Sharks"
+    },
+    {
+        "value": "Seattle Kraken",
+        "label": "Seattle Kraken"
+    },
+    {
+        "value": "Seattle Mariners",
+        "label": "Seattle Mariners"
+    },
+    {
+        "value": "Seattle Seahawks",
+        "label": "Seattle Seahawks"
+    },
+    {
+        "value": "St. Louis Blues",
+        "label": "St. Louis Blues"
+    },
+    {
+        "value": "St. Louis Cardinals",
+        "label": "St. Louis Cardinals"
+    },
+    {
+        "value": "Tampa Bay Buccaneers",
+        "label": "Tampa Bay Buccaneers"
+    },
+    {
+        "value": "Tampa Bay Lightning",
+        "label": "Tampa Bay Lightning"
+    },
+    {
+        "value": "Tampa Bay Rays",
+        "label": "Tampa Bay Rays"
+    },
+    {
+        "value": "Tennessee Titans",
+        "label": "Tennessee Titans"
+    },
+    {
+        "value": "Texas Rangers",
+        "label": "Texas Rangers"
+    },
+    {
+        "value": "Toronto Blue Jays",
+        "label": "Toronto Blue Jays"
+    },
+    {
+        "value": "Toronto Maple Leafs",
+        "label": "Toronto Maple Leafs"
+    },
+    {
+        "value": "Toronto Raptors",
+        "label": "Toronto Raptors"
+    },
+    {
+        "value": "Utah Jazz",
+        "label": "Utah Jazz"
+    },
+    {
+        "value": "Vancouver Canucks",
+        "label": "Vancouver Canucks"
+    },
+    {
+        "value": "Vegas Golden Knights",
+        "label": "Vegas Golden Knights"
+    },
+    {
+        "value": "Washington Capitals",
+        "label": "Washington Capitals"
+    },
+    {
+        "value": "Washington Commanders",
+        "label": "Washington Commanders"
+    },
+    {
+        "value": "Washington Nationals",
+        "label": "Washington Nationals"
+    },
+    {
+        "value": "Washington Wizards",
+        "label": "Washington Wizards"
+    },
+    {
+        "value": "Winnipeg Jets",
+        "label": "Winnipeg Jets"
+    }
+]

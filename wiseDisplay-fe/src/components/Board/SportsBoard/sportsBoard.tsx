@@ -1,10 +1,15 @@
 import './sportsBoard.css';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, FunctionComponent } from 'react';
 import { IApiGames } from '../../../../../wiseDisplay-api/interfaces/IApiGames';
+import { IPreferences } from '../../../../../wiseDisplay-api/interfaces/IApiPreferences';
 import GameInfo from './Game/GameInfo/gameInfo';
 import Matchup from './Game/matchup';
 
-const SportsBoard = () => {
+interface SportsBoardProps {
+    preferences: any
+}
+
+const SportsBoard: FunctionComponent<SportsBoardProps> = ({ preferences }) => {
     const [gameData, setGameData] = useState<IApiGames>({
         preferredTeamsLive: false,
         filteredGames: [],
@@ -20,20 +25,29 @@ const SportsBoard = () => {
         });
     };
 
+    const formatRequestBody = (preferences: any): IPreferences => {
+        return {
+            liveOnly: preferences.liveOnly,
+            favTeamsOnly: preferences.favTeamsOnly,
+            leagues: preferences.leagues.map(
+                (option: { value: string, label: string }) => option.value),
+            favTeams: preferences.favTeams.map(
+                (option: { value: string, label: string }) => option.value)
+        }
+
+    }
+
     const fetchData = useCallback(async () => {
         try {
+
+            const body = formatRequestBody(preferences);
             const response = await fetch('https://wisedisplay-be.onrender.com/api/games/all', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        liveOnly: true,
-                        favTeamsOnly: false,
-                        favTeams: [],
-                        leagues: ["NHL", "NFL", "NBA"],
-                    }),
-                });
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            });
 
 
             if (!response.ok) {
@@ -43,13 +57,13 @@ const SportsBoard = () => {
             const data: IApiGames = await response.json();
             setGameData(data);
             preloadImages(data.filteredGames.map(game => game.awayteam.logo));
-            preloadImages(data.filteredGames.map(game => game.hometeam.logo));  
+            preloadImages(data.filteredGames.map(game => game.hometeam.logo));
             setLoading(false);
         } catch (error) {
             console.error('Error fetching data:', error);
             setLoading(false);
         }
-    }, []);
+    }, [preferences]);
 
     useEffect(() => {
         const startInterval = () => {
@@ -67,7 +81,7 @@ const SportsBoard = () => {
         const stopInterval = () => {
             if (intervalRef.current !== null) {
                 clearInterval(intervalRef.current as NodeJS.Timeout);
-              }
+            }
         };
 
         fetchData();
@@ -82,14 +96,18 @@ const SportsBoard = () => {
     }, [fetchData, gameData.filteredGames.length, loading]);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p className='no-data'>Loading...</p>;
+    }
+    if (gameData.filteredGames.length <= 0) {
+        return <p className='no-data'>No Games</p>;
     }
 
     return (
         <>
-            <GameInfo gameData={gameData.filteredGames[currentIndex]}/>
-            <Matchup gameData={gameData.filteredGames[currentIndex]}/>
+            <GameInfo gameData={gameData.filteredGames[currentIndex]} />
+            <Matchup gameData={gameData.filteredGames[currentIndex]} />
         </>
+
     );
 };
 

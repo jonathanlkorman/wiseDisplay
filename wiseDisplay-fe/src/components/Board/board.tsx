@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
 import './board.css';
 import SportsBoard from './SportsBoard/sportsBoard';
 
-const Board = () => {
+interface BoardProps {
+    preferences: any
+}
+
+const Board: FunctionComponent<BoardProps> = ({ preferences }) => {
     return (
         <div className='board-wrapper'>
-            <SportsBoard />
+            <SportsBoard preferences={preferences} />
         </div>
     )
 }

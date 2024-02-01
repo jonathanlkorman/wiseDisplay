@@ -71,6 +71,10 @@
     letter-spacing: 6px;
 }
 
+.no-data {
+    font-size: 10vw;
+}
+
 .timeouts {
     display: flex;
     flex-direction: row;

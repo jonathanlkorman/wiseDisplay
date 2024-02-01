@@ -1,0 +1,18 @@
+[
+    {
+        "value": "NHL",
+        "label": "NHL"
+    },
+    {
+        "value": "NBA",
+        "label": "NBA"
+    },
+    {
+        "value": "MLB",
+        "label": "MLB"
+    },
+    {
+        "value": "NFL",
+        "label": "NFL"
+    }
+]

@@ -9,10 +9,10 @@
     box-sizing: border-box;
     text-decoration: none;
     background: transparent;
-    font-family: seven-segment, sans-serif;
 }
 
 body {
     overflow: hidden;
     overflow-y: scroll;
+    font-family: seven-segment, sans-serif;
 }

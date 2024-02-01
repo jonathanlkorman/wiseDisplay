@@ -1,4 +1,4 @@
-export interface IConfig {
+export interface IPreferences {
     liveOnly: boolean,
     favTeamsOnly: boolean,
     favTeams: string[],
