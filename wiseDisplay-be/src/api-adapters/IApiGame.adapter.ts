@@ -13,7 +13,7 @@ export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiG
         .some(game => game.isLive);
         
     const anyGamesLive: boolean = games
-    .filter(game => preferences.leagues.includes(game.league))
+    .filter(game => preferences.leagues.includes(game.league) || game.includesFav(preferences.favTeams))
     .some(game => game.isLive);
 
     const filteredGames: IApiGame[] = games
