@@ -142,7 +142,7 @@ export class GameDAL {
                         color: info.competitors[0].team.color ?? "", 
                         logo: info.competitors[0].team.logo, 
                         altcolor: info.competitors[0].team.alternateColor ?? "",
-                        record: info.competitors[0].records[0].summary,
+                        record: info.competitors[0].records?.[0]?.summary,
                     },
                     awayteam: {
                         teamShortName: info.competitors[1].team.abbreviation, 
@@ -152,7 +152,7 @@ export class GameDAL {
                         color: info.competitors[1].team.color ?? "", 
                         logo: info.competitors[1].team.logo, 
                         altcolor: info.competitors[1].team.alternateColor ?? "",
-                        record: info.competitors[1].records[0].summary,
+                        record: info.competitors[1].records?.[0]?.summary,
                     },
                     time: info.status.displayClock, 
                     period: info.status.period, 
