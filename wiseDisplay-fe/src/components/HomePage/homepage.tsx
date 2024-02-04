@@ -18,7 +18,9 @@ const HomePage = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        if (preferences.leagues?.length === 0) {
+        if (preferences.leagues?.length === 0 &&
+            preferences.favTeams?.length === 0
+        ) {
             setShowModal(true);
         }
     }, [preferences]);
