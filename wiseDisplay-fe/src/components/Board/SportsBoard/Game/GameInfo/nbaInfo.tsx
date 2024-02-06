@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import '../../sportsBoard.css';
+import '../GameInfo/gameInfo.css';
 import { IApiGame, IApiNBAInfo } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 
 
@@ -12,8 +12,8 @@ const NBAInfo: FunctionComponent<NBAInfoData> = ({ gameData }) => {
     const gameInfo = gameData.gameInfo as IApiNBAInfo;
     return (
         <div className='game-info'>
-            <p className='period'>{gameInfo.quarter}</p>
-            <p className='time'>{gameData.time}</p>
+            <span className='period'>{gameInfo.quarter}</span>
+            <span className='time'>{gameData.time}</span>
         </div>
     )
 }

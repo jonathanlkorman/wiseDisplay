@@ -1,7 +1,7 @@
 .board-wrapper {
     height: 100%;
     width: 100%;
-    background-color: rgb(232, 239, 236);
+    background-color: #fbfbfb;
     display: flex;
     align-items: center;
     justify-content: center;

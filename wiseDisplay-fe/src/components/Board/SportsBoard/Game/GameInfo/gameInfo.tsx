@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import '../../sportsBoard.css';
+import './gameInfo.css';
 import { IApiGame } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 import NFLInfo from './nflInfo';
 import NHLInfo from './nhlInfo';
@@ -47,8 +47,8 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
     if (gameData.state === 'pre') {
         return (
             <div className='game-info'>
-                <p className='game-day'>{displayDate(gameData.date).day}</p>
-                <p className='game-time'>{displayDate(gameData.date).time}</p>
+                <span className='game-day'>{displayDate(gameData.date).day}</span>
+                <span className='game-time'>{displayDate(gameData.date).time}</span>
             </div>
         );
     }
@@ -56,8 +56,8 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
     if (gameData.state === 'post') {
         return (
             <div className='game-info'>
-                <p className='game-status'>{gameData.detail}</p>
-                <p className='game-day'>{displayDate(gameData.date).day}</p>
+                <span className='game-status'>{gameData.detail}</span>
+                <span className='game-day'>{displayDate(gameData.date).day}</span>
             </div>
         );
     }

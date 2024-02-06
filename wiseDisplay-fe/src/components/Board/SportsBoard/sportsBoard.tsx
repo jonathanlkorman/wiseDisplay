@@ -1,9 +1,7 @@
-import './sportsBoard.css';
 import React, { useState, useEffect, useRef, useCallback, FunctionComponent } from 'react';
 import { IApiGames } from '../../../../../wiseDisplay-api/interfaces/IApiGames';
 import { IPreferences } from '../../../../../wiseDisplay-api/interfaces/IApiPreferences';
-import GameInfo from './Game/GameInfo/gameInfo';
-import Matchup from './Game/matchup';
+import Game from './Game/game';
 
 interface SportsBoardProps {
     preferences: any
@@ -103,11 +101,7 @@ const SportsBoard: FunctionComponent<SportsBoardProps> = ({ preferences }) => {
     }
 
     return (
-        <>
-            <GameInfo gameData={gameData.filteredGames[currentIndex]} />
-            <Matchup gameData={gameData.filteredGames[currentIndex]} />
-        </>
-
+        <Game gameData={gameData.filteredGames[currentIndex]} />
     );
 };
 

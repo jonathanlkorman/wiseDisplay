@@ -1,0 +1,42 @@
+.game-info {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-status {
+    font-size: 10vw;
+}
+
+.game-time {
+    font-size: 10vw;
+}
+
+.game-day {
+    font-size: 12vw;
+}
+
+.time {
+    font-size: 10vw;
+}
+
+.period {
+    font-size: 12vw;
+}
+
+/* baseball */
+/* .outs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+.out {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid black;
+} */

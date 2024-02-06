@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import '../../sportsBoard.css';
+import '../GameInfo/gameInfo.css';
 import { IApiGame, IApiNFLInfo } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 
 
@@ -14,13 +14,13 @@ const NFLInfo: FunctionComponent<NFLInfoData> = ({ gameData }) => {
         <div className='game-info'>
             {gameData.detail !== 'Halftime'? (
                 <>
-                    <p className='quarter'>{gameInfo.quarter}</p>
-                    <p className='time'>{gameData.time}</p>
-                    <p className='down-and-distance'>{gameInfo.down?.replace('&', '+')}</p>
-                    <p className='spot'>{gameInfo.spot}</p>
+                    <span className='quarter'>{gameInfo.quarter}</span>
+                    <span className='time'>{gameData.time}</span>
+                    <span className='down-and-distance'>{gameInfo.down?.replace('&', '+')}</span>
+                    <span className='spot'>{gameInfo.spot}</span>
                 </>
             ) : (
-                <p className='quarter'>Half</p>
+                <span className='quarter'>Half</span>
             )}
             
         </div>

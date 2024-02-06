@@ -9,7 +9,7 @@ import secondThird from '../../../../../assets/second_third.svg'
 import firstThird from '../../../../../assets/first_third.svg'
 import loaded from '../../../../../assets/loaded.svg'
 
-import '../../sportsBoard.css';
+import '../GameInfo/gameInfo.css';
 import { IApiGame, IApiMLBInfo } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 
 
@@ -41,9 +41,9 @@ const MLBInfo: FunctionComponent<MLBInfoData> = ({ gameData }) => {
 
     return (
         <div className='game-info'>
-            <p className='inning'>{gameInfo.inning}</p>
+            <span className='inning'>{gameInfo.inning}</span>
             <img className='bases' src={getBase()} alt='bases' />
-            <p className='count'>{`${gameInfo.balls} - ${gameInfo.strikes}`}</p>
+            <span className='count'>{`${gameInfo.balls} - ${gameInfo.strikes}`}</span>
             <div className='outs'>
                 {[...Array(3)].map((_, index) => (
                     <div
