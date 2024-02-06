@@ -49,6 +49,11 @@ export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiG
             detail: game.detail,
             state: game.state,
             isLive: game.isLive,
+            odds: {
+                details: game.odds.details,
+                overUnder: game.odds.overUnder,
+                spread: game.odds.spread
+            },
             halftime: game.halftime,
             gameInfo: IApiGameInfoAdapter(game),          
         }));

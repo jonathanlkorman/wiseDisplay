@@ -51,6 +51,11 @@ export class GameDAL {
                     halftime: info.status.type.name,
                     state: info.status.type.state,
                     isLive: info.status.type.state && info.status.type.state != 'pre' && info.status.type.state != 'post',
+                    odds: {
+                        details: info?.odds?.[0]?.details,
+                        overUnder: info?.odds?.[0]?.overUnder,
+                        spread: info?.odds?.[0]?.spread
+                    },
                     homeTimeouts: info?.situation?.homeTimeouts ?? 0,
                     awayTimeouts: info?.situation?.awayTimeouts ?? 0,
                     down: info?.situation?.shortDownDistanceText, 
@@ -109,6 +114,11 @@ export class GameDAL {
                     detail: info.status.type.detail,  
                     state: info.status.type.state,
                     isLive: info.status.type.state && info.status.type.state != 'pre' && info.status.type.state != 'post',
+                    odds: {
+                        details: info?.odds?.[0]?.details,
+                        overUnder: info?.odds?.[0]?.overUnder,
+                        spread: info?.odds?.[0]?.spread
+                    }
                 }
                 return game;
             });
@@ -160,6 +170,11 @@ export class GameDAL {
                     detail: info.status.type.detail, 
                     state: info.status.type.state,
                     isLive: info.status.type.state && info.status.type.state != 'pre' && info.status.type.state != 'post',
+                    odds: {
+                        details: info?.odds?.[0]?.details,
+                        overUnder: info?.odds?.[0]?.overUnder,
+                        spread: info?.odds?.[0]?.spread
+                    }
                 }
                 return game;
             });
@@ -211,6 +226,11 @@ export class GameDAL {
                     detail: info.status.type.detail,  
                     state: info.status.type.state,
                     isLive: info.status.type.state && info.status.type.state != 'pre' && info.status.type.state != 'post',
+                    odds: {
+                        details: info?.odds?.[0]?.details,
+                        overUnder: info?.odds?.[0]?.overUnder,
+                        spread: info?.odds?.[0]?.spread
+                    },
                     outs: info?.situation?.outs,
                     strikes: info?.situation?.strikes,
                     balls: info?.situation?.balls,

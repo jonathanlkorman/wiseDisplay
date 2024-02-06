@@ -6,19 +6,26 @@ export interface IGame {
     awayteam: ITeam,
     time: string,
     over: boolean,
-    detail: string, 
+    detail: string,
     halftime?: boolean | undefined,
     state: string,
     isLive: boolean,
+    odds: IOdds;
 }
 
 export interface ITeam {
-    teamShortName: string, 
-    teamFullName: string, 
-    id: string, 
+    teamShortName: string,
+    teamFullName: string,
+    id: string,
     score: number,
-    color: string, 
+    color: string,
     logo: string,
     altcolor: string,
-    record?: string, 
+    record?: string,
+}
+
+export interface IOdds {
+    details: string,
+    overUnder: number,
+    spread: number
 }

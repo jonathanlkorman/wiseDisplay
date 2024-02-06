@@ -1,4 +1,5 @@
 import { IGame } from "../blueprints/IGame";
+import { Odds } from "./Odds";
 import { Team } from "./Team";
 
 export class Game implements IGame {
@@ -13,6 +14,7 @@ export class Game implements IGame {
     private _halftime?: boolean;
     private _state: string;
     private _isLive: boolean;
+    private _odds: Odds;
 
     constructor(data: IGame){
         this._league = data.league,
@@ -25,7 +27,8 @@ export class Game implements IGame {
         this._detail = data.detail,
         this._halftime = data.halftime,
         this._state = data.state,
-        this._isLive = data.isLive
+        this._isLive = data.isLive,
+        this._odds = new Odds(data.odds)
     }
 
     public get league(): string {
@@ -60,7 +63,10 @@ export class Game implements IGame {
     }
     public get isLive(): boolean {
         return this._isLive;
-    }    
+    }
+    public get odds(): Odds {
+        return this._odds;
+    }
 
     public includesFav(favTeams: string[]): boolean {
         return favTeams.includes(this.awayteam.teamFullName) || favTeams.includes(this.hometeam.teamFullName);

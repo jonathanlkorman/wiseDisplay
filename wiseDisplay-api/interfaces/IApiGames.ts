@@ -1,4 +1,4 @@
-import { ITeam } from '../../wiseDisplay-be/src/schema/blueprints/IGame';
+import { IOdds, ITeam } from '../../wiseDisplay-be/src/schema/blueprints/IGame';
 
 export interface IApiGames {
     preferredTeamsLive: boolean,
@@ -17,6 +17,7 @@ export interface IApiGame {
     halftime?: boolean | undefined,
     state: string,
     isLive: boolean,
+    odds: IOdds
     gameInfo: IApiGameInfo
 }
 

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { BsDot } from 'react-icons/bs';
 import { IApiGame } from "../../../../../../wiseDisplay-api/interfaces/IApiGames";
 
 import "./game.css"
@@ -11,6 +12,7 @@ interface GameInfoData {
 
 interface TeamData {
     teamData: ITeam;
+    state: string;
 }
 
 const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
@@ -24,25 +26,35 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
         <div className="gameCard">
             <div className="gameHeader">
                 <div className="gameColorBar">
-                    <div 
-                        className="awayTeamColor teamColor" 
-                        style={{backgroundColor: `#${awayTeamColor ? awayTeamColor : 'e8efec'}`}}>
+                    <div
+                        className="awayTeamColor teamColor"
+                        style={{ backgroundColor: `#${awayTeamColor ? awayTeamColor : 'e8efec'}` }}>
                     </div>
-                    <div 
-                        className="homeTeamColor teamColor" 
-                        style={{backgroundColor: `#${gameData.hometeam.color ? gameData.hometeam.color : 'e8efec'}`}}>
+                    <div
+                        className="homeTeamColor teamColor"
+                        style={{ backgroundColor: `#${gameData.hometeam.color ? gameData.hometeam.color : 'e8efec'}` }}>
                     </div>
                 </div>
             </div>
             <div className="gameSummary">
                 <div className="gameMatchup">
-                    <Team teamData={gameData.awayteam} />
+                    <Team
+                        teamData={gameData.awayteam}
+                        state={gameData.state}
+                    />
                     <GameInfo gameData={gameData} />
-                    <Team teamData={gameData.hometeam} />
+                    <Team
+                        teamData={gameData.hometeam}
+                        state={gameData.state}
+                    />
                 </div>
-                <div className="gameOdds">
-
-                </div>
+                {gameData.state === 'pre' &&
+                    <div className="gameOdds">
+                        <span className="oddsDetails">{gameData.odds.details}</span>
+                        <BsDot />
+                        <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
+                    </div>
+                }
             </div>
         </div>
     );
@@ -51,7 +63,7 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
 export default Game;
 
 
-const Team: FunctionComponent<TeamData> = ({ teamData }) => (
+const Team: FunctionComponent<TeamData> = ({ teamData, state }) => (
     <div className='team'>
         <div className="teamLogoWrapper">
             <img className="teamLogo" src={teamData.logo} alt="teamLogo" />
@@ -59,7 +71,7 @@ const Team: FunctionComponent<TeamData> = ({ teamData }) => (
         <div className="teamNameWrapper">
             <span className="teamName">{teamData.teamShortName}</span>
         </div>
-        {true ? (
+        {state === 'pre' ? (
             <div className='teamRecordWrapper'>
                 <span className="teamRecord">{teamData.record}</span>
             </div>
@@ -75,8 +87,8 @@ const Team: FunctionComponent<TeamData> = ({ teamData }) => (
 );
 
 function getMostDifferentColor(mainColor: string, color1: string, color2: string): string {
-    if(!mainColor || !color1 || !color2) return "";
-    
+    if (!mainColor || !color1 || !color2) return "";
+
     mainColor = mainColor.replace('#', '');
     color1 = color1.replace('#', '');
     color2 = color2.replace('#', '');
