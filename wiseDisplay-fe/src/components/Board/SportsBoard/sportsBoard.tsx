@@ -15,6 +15,7 @@ const SportsBoard: FunctionComponent<SportsBoardProps> = ({ preferences }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const retryRef = useRef<NodeJS.Timeout | null>(null);
 
     const preloadImages = (urls: string[]) => {
         urls.forEach(url => {
@@ -57,9 +58,15 @@ const SportsBoard: FunctionComponent<SportsBoardProps> = ({ preferences }) => {
             preloadImages(data.filteredGames.map(game => game.awayteam.logo));
             preloadImages(data.filteredGames.map(game => game.hometeam.logo));
             setLoading(false);
+            
+            if (retryRef.current !== null) {
+                clearTimeout(retryRef.current as NodeJS.Timeout);
+            }
         } catch (error) {
             console.error('Error fetching data:', error);
-            setLoading(false);
+            retryRef.current = setTimeout(() => {
+                fetchData();
+            }, 30000);
         }
     }, [preferences]);
 
