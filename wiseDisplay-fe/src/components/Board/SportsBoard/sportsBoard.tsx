@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, FunctionComponent } fr
 import { IApiGames } from '../../../../../wiseDisplay-api/interfaces/IApiGames';
 import { IPreferences } from '../../../../../wiseDisplay-api/interfaces/IApiPreferences';
 import Game from './Game/game';
+import GameLoadingScreen from './Game/LoadingScreen/gameLoadingScreen';
 
 interface SportsBoardProps {
     preferences: any
@@ -101,7 +102,7 @@ const SportsBoard: FunctionComponent<SportsBoardProps> = ({ preferences }) => {
     }, [fetchData, gameData.filteredGames.length, loading]);
 
     if (loading) {
-        return <p className='no-data'>Loading...</p>;
+        return <GameLoadingScreen />
     }
     if (gameData.filteredGames.length <= 0) {
         return <p className='no-data'>No Games</p>;
