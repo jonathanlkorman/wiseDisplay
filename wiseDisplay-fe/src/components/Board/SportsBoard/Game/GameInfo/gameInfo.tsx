@@ -57,7 +57,6 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
         return (
             <div className='game-info'>
                 <span className='game-status'>{gameData.detail}</span>
-                <span className='game-date'>{displayDate(gameData.date).day}</span>
             </div>
         );
     }

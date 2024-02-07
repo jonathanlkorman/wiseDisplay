@@ -13,6 +13,7 @@ interface GameInfoData {
 interface TeamData {
     teamData: ITeam;
     state: string;
+    teamIndicator: string;
 }
 
 const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
@@ -41,11 +42,13 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
                     <Team
                         teamData={gameData.awayteam}
                         state={gameData.state}
+                        teamIndicator="awayTeam"
                     />
                     <GameInfo gameData={gameData} />
                     <Team
                         teamData={gameData.hometeam}
                         state={gameData.state}
+                        teamIndicator="homeTeam"
                     />
                 </div>
                 {gameData.state === 'pre' &&
@@ -63,26 +66,29 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
 export default Game;
 
 
-const Team: FunctionComponent<TeamData> = ({ teamData, state }) => (
-    <div className='team'>
-        <div className="teamNameWrapper">
-            <span className="teamName">{teamData.teamShortName}</span>
-        </div>
-        <div className="teamLogoWrapper">
-            <img className="teamLogo" src={teamData.logo} alt="teamLogo" />
-        </div>
-        {state === 'pre' ? (
-            <div className='teamRecordWrapper'>
-                <span className="teamRecord">{teamData.record}</span>
+const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator }) => (
+    <div className='teamWrapper'>
+        <div className={`team ${teamIndicator}`}>
+            <div className="teamLogoWrapper">
+                <img className="teamLogo" src={teamData.logo} alt="teamLogo" />
             </div>
-        ) : (
-            <>
-                <div className='scoreWrapper'>
-                    <span className="score">{teamData.score}</span>
+            <div className="teamInfoWrapper">
+            <div className="teamNameWrapper">
+                <span className="teamName">{teamData.teamShortName}</span>
+            </div>
+            {state === 'pre' && (
+                <div className='teamRecordWrapper'>
+                    <span className="teamRecord">{teamData.record}</span>
                 </div>
-            </>
-        )}
-
+            )}
+            </div>
+            
+        </div>
+        <div className='scoreWrapper'>
+            {state !== 'pre' &&
+                <span className="score">{teamData.score}</span>
+            }
+        </div>
     </div>
 );
 
