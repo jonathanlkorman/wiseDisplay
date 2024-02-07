@@ -7,10 +7,14 @@
 }
 
 .game-status {
-    font-size: 10vw;
+    font-size: 12vw;
 }
 
 .game-time {
+    font-size: 10vw;
+}
+
+.game-date {
     font-size: 10vw;
 }
 
