@@ -65,11 +65,11 @@ export default Game;
 
 const Team: FunctionComponent<TeamData> = ({ teamData, state }) => (
     <div className='team'>
-        <div className="teamLogoWrapper">
-            <img className="teamLogo" src={teamData.logo} alt="teamLogo" />
-        </div>
         <div className="teamNameWrapper">
             <span className="teamName">{teamData.teamShortName}</span>
+        </div>
+        <div className="teamLogoWrapper">
+            <img className="teamLogo" src={teamData.logo} alt="teamLogo" />
         </div>
         {state === 'pre' ? (
             <div className='teamRecordWrapper'>
