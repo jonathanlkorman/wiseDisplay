@@ -22,12 +22,12 @@
     font-size: 12vw;
 }
 
-.time {
-    font-size: 10vw;
-}
-
-.period {
-    font-size: 12vw;
+.time,
+.period,
+.quarter,
+.down-and-distance,
+.spot {
+    font-size: 9vw;
 }
 
 /* baseball */
