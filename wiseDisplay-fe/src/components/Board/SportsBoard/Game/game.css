@@ -136,16 +136,4 @@
     text-align: center;
 }
 
-.gameOdds {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 1%;
-    height: 12.5%;
-}
 
-.oddsOverUnder, .oddsDetails {
-    font-size: 7vw;
-}

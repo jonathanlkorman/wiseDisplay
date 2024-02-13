@@ -6,6 +6,7 @@ import NFLInfo from './nflInfo';
 import NHLInfo from './nhlInfo';
 import NBAInfo from './nbaInfo';
 import MLBInfo from './mlbInfo';
+import { BsDot } from 'react-icons/bs';
 
 
 interface GameInfoData {
@@ -49,6 +50,11 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
             <div className='game-info'>
                 <span className='game-day'>{displayDate(gameData.date).day}</span>
                 <span className='game-time'>{displayDate(gameData.date).time}</span>
+                <div className="gameOdds">
+                    <span className="oddsDetails">{gameData.odds.details}</span>
+                    <BsDot />
+                    <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
+                </div>
             </div>
         );
     }

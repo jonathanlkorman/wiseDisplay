@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import { BsDot } from 'react-icons/bs';
 import { IApiGame } from "../../../../../../wiseDisplay-api/interfaces/IApiGames";
 
 import "./game.css"
@@ -51,13 +50,6 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
                         teamIndicator="homeTeam"
                     />
                 </div>
-                {gameData.state === 'pre' &&
-                    <div className="gameOdds">
-                        <span className="oddsDetails">{gameData.odds.details}</span>
-                        <BsDot />
-                        <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
-                    </div>
-                }
             </div>
         </div>
     );
