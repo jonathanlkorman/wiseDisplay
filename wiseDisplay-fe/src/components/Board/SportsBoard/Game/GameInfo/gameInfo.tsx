@@ -52,7 +52,7 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
                 <span className='game-time'>{displayDate(gameData.date).time}</span>
                 <div className="gameOdds">
                     <span className="oddsDetails">{gameData.odds.details}</span>
-                    <BsDot />
+                    <BsDot size='48px'/>
                     <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
                 </div>
             </div>
