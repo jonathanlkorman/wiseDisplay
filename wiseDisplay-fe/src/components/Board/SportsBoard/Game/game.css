@@ -129,6 +129,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    position: relative;
 }
 
 .score {
@@ -136,4 +137,15 @@
     text-align: center;
 }
 
+.homeCaret {
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+}
+
+.awayCaret {
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+}
 

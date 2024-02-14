@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { IApiGame } from "../../../../../../wiseDisplay-api/interfaces/IApiGames";
+import { BsCaretLeftFill, BsCaretRightFill } from 'react-icons/bs';
 
 import "./game.css"
 import { ITeam } from "../../../../../../wiseDisplay-be/src/schema/blueprints/IGame";
@@ -13,6 +14,7 @@ interface TeamData {
     teamData: ITeam;
     state: string;
     teamIndicator: string;
+    winner: boolean;
 }
 
 const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
@@ -42,12 +44,14 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
                         teamData={gameData.awayteam}
                         state={gameData.state}
                         teamIndicator="awayTeam"
+                        winner={gameData.awayteam.score > gameData.hometeam.score}
                     />
                     <GameInfo gameData={gameData} />
                     <Team
                         teamData={gameData.hometeam}
                         state={gameData.state}
                         teamIndicator="homeTeam"
+                        winner={gameData.hometeam.score > gameData.awayteam.score}
                     />
                 </div>
             </div>
@@ -58,21 +62,21 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
 export default Game;
 
 
-const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator }) => (
+const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator, winner }) => (
     <div className='teamWrapper'>
         <div className={`team ${teamIndicator}`}>
             <div className="teamLogoWrapper">
                 <img className="teamLogo" src={teamData.logo} alt="teamLogo" />
             </div>
             <div className="teamInfoWrapper">
-            <div className="teamNameWrapper">
-                <span className="teamName">{teamData.teamShortName}</span>
-            </div>
-            {state === 'pre' && (
-                <div className='teamRecordWrapper'>
-                    <span className="teamRecord">{teamData.record}</span>
+                <div className="teamNameWrapper">
+                    <span className="teamName">{teamData.teamShortName}</span>
                 </div>
-            )}
+                {state === 'pre' && (
+                    <div className='teamRecordWrapper'>
+                        <span className="teamRecord">{teamData.record}</span>
+                    </div>
+                )}
             </div>
             
         </div>
@@ -80,6 +84,11 @@ const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator }) =
             {state !== 'pre' &&
                 <span className="score">{teamData.score}</span>
             }
+            {state === "post" && winner && (
+                teamIndicator === "awayTeam" 
+                ?   <BsCaretLeftFill className="awayCaret" size={50}/> 
+                :   <BsCaretRightFill className="homeCaret" size={50}/>
+            )}
         </div>
     </div>
 );
