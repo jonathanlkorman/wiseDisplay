@@ -139,13 +139,17 @@
 
 .homeCaret {
     position: absolute;
-    bottom: 0;
-    left: -50px;
+    bottom: 8%;
+    right: 80%;
+    height: 8vw;
+    width: 8vw;
 }
 
 .awayCaret {
     position: absolute;
-    bottom: 0;
-    right: -50px;
+    bottom: 8%;
+    left: 80%;
+    height: 8vw;
+    width: 8vw;
 }
 

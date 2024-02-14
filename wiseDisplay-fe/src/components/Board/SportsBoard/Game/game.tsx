@@ -86,8 +86,8 @@ const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator, win
             }
             {state === "post" && winner && (
                 teamIndicator === "awayTeam" 
-                ?   <BsCaretLeftFill className="awayCaret" size={50}/> 
-                :   <BsCaretRightFill className="homeCaret" size={50}/>
+                ?   <BsCaretLeftFill className="awayCaret" /> 
+                :   <BsCaretRightFill className="homeCaret" />
             )}
         </div>
     </div>
