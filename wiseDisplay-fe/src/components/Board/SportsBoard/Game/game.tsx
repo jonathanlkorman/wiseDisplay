@@ -80,7 +80,7 @@ const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator, win
             </div>
             
         </div>
-        <div className='scoreWrapper'>
+        <div className={`scoreWrapper score${teamIndicator}`}>
             {state !== 'pre' &&
                 <span className="score">{teamData.score}</span>
             }
