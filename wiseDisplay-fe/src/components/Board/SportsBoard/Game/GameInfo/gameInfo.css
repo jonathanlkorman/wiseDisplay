@@ -48,8 +48,17 @@
     font-size: 9vw;
 }
 
-/* baseball */
-/* .outs{
+.game-info-baseball {
+    justify-content: space-between;
+}
+
+.inning,
+.count {
+    font-size: 7vw;
+}
+
+.outs{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -57,8 +66,12 @@
     gap: 10px;
 }
 .out {
-    height: 50px;
-    width: 50px;
+    width: 5vw;
+    height: 5vw;
     border-radius: 50%;
     border: 3px solid black;
-} */
+}
+
+.bases {
+    width: 80%;
+}
