@@ -48,6 +48,15 @@ const PreferencesModal: FunctionComponent<any> = ({ preferences, setPreferences,
             />
           </div>
           <div className="form-group">
+            <label htmlFor="dailyOnly">Daily Only</label>
+            <Toggle
+              id="dailyOnly"
+              name="dailyOnly"
+              checked={preferences.dailyOnly}
+              onChange={handleToggleChange}
+            />
+          </div>
+          <div className="form-group">
             <label htmlFor="favTeams">Favorite Teams</label>
             <Select
               id="favTeams"

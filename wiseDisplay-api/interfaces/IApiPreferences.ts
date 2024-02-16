@@ -3,4 +3,6 @@ export interface IPreferences {
     favTeamsOnly: boolean,
     favTeams: string[],
     leagues: string[],
+    dailyOnly: boolean,
+    datetime: string;
 }

@@ -32,7 +32,9 @@ const SportsBoard: FunctionComponent<SportsBoardProps> = ({ preferences }) => {
             leagues: preferences.leagues.map(
                 (option: { value: string, label: string }) => option.value),
             favTeams: preferences.favTeams.map(
-                (option: { value: string, label: string }) => option.value)
+                (option: { value: string, label: string }) => option.value),
+            dailyOnly: preferences.dailyOnly,
+            datetime: new Date().toISOString()
         }
 
     }

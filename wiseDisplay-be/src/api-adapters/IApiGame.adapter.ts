@@ -20,6 +20,7 @@ export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiG
         .filter(game => (preferences.liveOnly && anyGamesLive) ? game.isLive : true)
         .filter(game => preferences.leagues.includes(game.league) || game.includesFav(preferences.favTeams))
         .filter(game => (preferences.favTeamsOnly && preferredTeamsLive) ? game.includesFav(preferences.favTeams) && game.isLive : true)
+        .filter(game => (preferences.dailyOnly ? game.isWithin24Hours(preferences.datetime) : true))
         .map(game =>({
             league: game.league,
             name: game.name,

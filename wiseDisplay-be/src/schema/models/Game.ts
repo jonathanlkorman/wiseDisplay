@@ -71,4 +71,13 @@ export class Game implements IGame {
     public includesFav(favTeams: string[]): boolean {
         return favTeams.includes(this.awayteam.teamFullName) || favTeams.includes(this.hometeam.teamFullName);
     };
+
+    public isWithin24Hours(datetime: string):  boolean {
+        const date1 = new Date (datetime);
+        const date2 = new Date (this.date);
+        
+        const diff = Math.abs (date1.getTime() - date2.getTime());
+       
+        return diff < 86400000;
+    }
 }

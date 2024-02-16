@@ -13,6 +13,7 @@ const HomePage = () => {
         favTeamsOnly: false,
         favTeams: [],
         leagues: [],
+        dailyOnly: false
     });
 
     const [showModal, setShowModal] = useState(false);
