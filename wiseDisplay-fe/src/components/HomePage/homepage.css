@@ -8,3 +8,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.pref {
+    position: absolute;
+    top: 6%;
+    left: 0;
+    height: 2vw;
+    width: 2vw;
+}

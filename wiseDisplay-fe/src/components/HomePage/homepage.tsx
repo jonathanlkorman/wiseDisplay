@@ -4,6 +4,7 @@ import './homepage.css';
 import Board from '../Board/board';
 import { useLocalStorage } from '../DataStore/localstorage';
 import PreferencesModal from '../PreferencesModal/preferencesModal';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 
 const HomePage = () => {
@@ -28,6 +29,7 @@ const HomePage = () => {
 
     return (
         <div className='home-page-wrapper'>
+            <BsThreeDotsVertical className='pref' onClick={() => setShowModal(true)} />
             {showModal 
             ?
                 <PreferencesModal
