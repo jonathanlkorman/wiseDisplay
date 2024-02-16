@@ -50,11 +50,13 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
             <div className='game-info'>
                 <span className='game-day'>{displayDate(gameData.date).day}</span>
                 <span className='game-time'>{displayDate(gameData.date).time}</span>
-                <div className="gameOdds">
-                    <span className="oddsDetails">{gameData.odds.details}</span>
-                    <BsDot className='oddsDivider'/>
-                    <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
-                </div>
+                {(gameData.odds.details && gameData.odds.overUnder) &&
+                    <div className="gameOdds">
+                        <span className="oddsDetails">{gameData.odds.details}</span>
+                        <BsDot className='oddsDivider'/>
+                        <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
+                    </div>
+                }
             </div>
         );
     }
