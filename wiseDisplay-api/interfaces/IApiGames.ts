@@ -32,7 +32,7 @@ export interface IApiNFLInfo {
 }
 
 export interface IApiMLBInfo {
-    inning: number,
+    inning: string,
     outs: number | null,
     strikes: number | null,
     balls: number | null,

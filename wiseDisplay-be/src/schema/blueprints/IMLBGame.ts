@@ -1,7 +1,7 @@
 import { IGame } from "./IGame";
 
 export interface IMLBGame extends IGame {
-    inning: number,
+    inning: string,
     outs: number | null,
     strikes: number | null,
     balls: number | null,

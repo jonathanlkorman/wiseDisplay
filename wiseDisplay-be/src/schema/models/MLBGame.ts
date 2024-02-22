@@ -2,7 +2,7 @@ import { IMLBGame } from "../blueprints/IMLBGame";
 import { Game } from "./Game";
 
 export class MLBGame extends Game implements IMLBGame {
-    private _inning: number;
+    private _inning: string;
     private _outs: number | null;
     private _strikes: number | null;
     private _balls: number | null;
@@ -21,7 +21,7 @@ export class MLBGame extends Game implements IMLBGame {
         this._onThird = data?.onThird
     }
 
-    public get inning(): number {
+    public get inning(): string {
         return this._inning;
     }
     public get outs(): number | null {
