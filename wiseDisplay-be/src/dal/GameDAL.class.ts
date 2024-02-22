@@ -221,7 +221,7 @@ export class GameDAL {
                         record: info?.competitors?.[1]?.records?.[0]?.summary, 
                     },
                     time: info.status.displayClock, 
-                    inning: info.status.shortDetail, 
+                    inning: info.status.type.shortDetail, 
                     over: info.status.type.completed,
                     detail: info.status.type.detail,  
                     state: info.status.type.state,
