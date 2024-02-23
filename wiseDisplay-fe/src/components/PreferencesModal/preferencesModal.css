@@ -58,3 +58,7 @@ button {
 button:hover {
     background-color: #1976d2;
 }
+
+#favTeams, #leagues {
+    max-width: 70%;
+}

@@ -57,23 +57,6 @@ const PreferencesModal: FunctionComponent<any> = ({ preferences, setPreferences,
             />
           </div>
           <div className="form-group">
-            <label htmlFor="favTeams">Favorite Teams</label>
-            <Select
-              id="favTeams"
-              name="favTeams"
-              value={preferences.favTeams}
-              options={teamOptions}
-              isMulti
-              onChange={(options: any) => handleSelectChange("favTeams", options)}
-              styles={{
-                control: (baseStyles, state) => ({
-                  ...baseStyles,
-                  width: '20vw',
-                }),
-              }}
-            />
-          </div>
-          <div className="form-group">
             <label htmlFor="leagues">Leagues</label>
             <Select
               id="leagues"
@@ -82,12 +65,17 @@ const PreferencesModal: FunctionComponent<any> = ({ preferences, setPreferences,
               options={leagueOptions}
               isMulti
               onChange={(options: any) => handleSelectChange("leagues", options)}
-              styles={{
-                control: (baseStyles, state) => ({
-                  ...baseStyles,
-                  width: '20vw',
-                }),
-              }}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="favTeams">Favorite Teams</label>
+            <Select
+              id="favTeams"
+              name="favTeams"
+              value={preferences.favTeams}
+              options={teamOptions}
+              isMulti
+              onChange={(options: any) => handleSelectChange("favTeams", options)}
             />
           </div>
           <button type="button" onClick={handleClose}>
