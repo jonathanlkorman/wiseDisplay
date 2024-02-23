@@ -24,6 +24,8 @@ p {
     border-radius: 10px;
     width: 80%;
     max-width: 600px;
+    max-height: 90vh;
+    overflow: scroll;
 }
 
 .form-group {
