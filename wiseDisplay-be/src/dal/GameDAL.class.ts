@@ -237,6 +237,32 @@ export class GameDAL {
                     onFirst: info?.situation?.onFirst,
                     onSecond: info?.situation?.onSecond,
                     onThird: info?.situation?.onThird,
+                    batter: {
+                        id: info?.situation?.batter?.athlete?.id,
+                        teamId: info?.situation?.batter?.athlete?.team?.id,
+                        headshot: info?.situation?.batter?.athlete?.headshot,
+                        position: info?.situation?.batter?.athlete?.position,
+                        shortName: info?.situation?.batter?.athlete?.shortName,
+                        jerseyNumber: info?.situation?.batter?.athlete?.jersey,
+                    },
+                    pitcher: {
+                        id: info?.situation?.pitcher?.athlete?.id,
+                        teamId: info?.situation?.pitcher?.athlete?.team?.id,
+                        headshot: info?.situation?.pitcher?.athlete?.headshot,
+                        position: info?.situation?.pitcher?.athlete?.position,
+                        shortName: info?.situation?.pitcher?.athlete?.shortName,
+                        jerseyNumber: info?.situation?.pitcher?.athlete?.jersey,
+                    },
+                    dueUp: info?.situation?.dueUp?.map((player: any) => {
+                        return {
+                            id: player?.athlete?.id,
+                            teamId: player?.athlete?.team?.id,
+                            headshot: player?.athlete?.headshot,
+                            position: player?.athlete?.position,
+                            shortName: player?.athlete?.shortName,
+                            jerseyNumber: player?.athlete?.jersey,
+                        }
+                    })
                 }
                 return game;
             });

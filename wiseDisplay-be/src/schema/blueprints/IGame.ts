@@ -24,6 +24,15 @@ export interface ITeam {
     record?: string,
 }
 
+export interface IPlayer {
+    shortName: string,
+    id: string,
+    teamId: string,
+    headshot: string,
+    jerseyNumber: string,
+    position: string
+}
+
 export interface IOdds {
     details: string,
     overUnder: number,

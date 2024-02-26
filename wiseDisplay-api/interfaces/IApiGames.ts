@@ -1,4 +1,4 @@
-import { IOdds, ITeam } from '../../wiseDisplay-be/src/schema/blueprints/IGame';
+import { IOdds, IPlayer, ITeam } from '../../wiseDisplay-be/src/schema/blueprints/IGame';
 
 export interface IApiGames {
     preferredTeamsLive: boolean,
@@ -39,6 +39,9 @@ export interface IApiMLBInfo {
     onFirst: boolean | null,
     onSecond: boolean | null,
     onThird: boolean | null,
+    pitcher: IPlayer | null;
+    batter: IPlayer | null;
+    dueUp: IPlayer[] | null;
 }
 
 export interface IApiNBAInfo {

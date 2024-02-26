@@ -86,7 +86,33 @@ const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
             balls: game.balls,
             onFirst: game.onFirst,
             onSecond: game.onSecond,
-            onThird: game.onThird
+            onThird: game.onThird,
+            pitcher: {
+                id: game.pitcher.id,
+                teamId: game.pitcher.teamId,
+                shortName: game.pitcher.shortName,
+                position: game.pitcher.position,
+                headshot: game.pitcher.headshot,
+                jerseyNumber: game.pitcher.jerseyNumber
+            },
+            batter: {
+                id: game.batter.id,
+                teamId: game.batter.teamId,
+                shortName: game.batter.shortName,
+                position: game.batter.position,
+                headshot: game.batter.headshot,
+                jerseyNumber: game.batter.jerseyNumber
+            },
+            dueUp: game?.dueUp?.map(player => {
+                return {
+                    id: player.id,
+                    teamId: player.teamId,
+                    shortName: player.shortName,
+                    position: player.position,
+                    headshot: player.headshot,
+                    jerseyNumber: player.jerseyNumber
+                }
+            })
         }
     }
     else if(game instanceof NBAGame) {

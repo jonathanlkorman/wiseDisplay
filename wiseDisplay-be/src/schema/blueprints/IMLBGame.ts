@@ -1,4 +1,4 @@
-import { IGame } from "./IGame";
+import { IGame, IPlayer } from "./IGame";
 
 export interface IMLBGame extends IGame {
     inning: string,
@@ -8,4 +8,7 @@ export interface IMLBGame extends IGame {
     onFirst: boolean | null,
     onSecond: boolean | null,
     onThird: boolean | null,
+    batter: IPlayer | null,
+    pitcher: IPlayer | null,
+    dueUp: IPlayer[] | null,
 }
