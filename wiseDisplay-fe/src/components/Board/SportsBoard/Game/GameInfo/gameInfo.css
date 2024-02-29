@@ -75,3 +75,20 @@
 .bases {
     width: 80%;
 }
+
+.dueUp {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    padding: 2rem;
+    align-items: center;
+}
+
+.dueUpHeader {
+    font-size: 6vw;
+}
+
+.dueUpItem {
+    font-size: 5vw;
+}

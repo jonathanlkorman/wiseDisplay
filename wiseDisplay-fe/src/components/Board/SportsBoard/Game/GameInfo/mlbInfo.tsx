@@ -35,24 +35,35 @@ const MLBInfo: FunctionComponent<MLBInfoData> = ({ gameData }) => {
             return second;
         else if (gameInfo.onFirst && !gameInfo.onSecond && !gameInfo.onThird)
             return first;
-        else 
+        else
             return empty;
     }
 
     return (
         <div className='game-info'>
             <span className='inning'>{gameInfo.inning}</span>
-            <img className='bases' src={getBase()} alt='bases' />
-            <span className='count'>{`${gameInfo.balls} - ${gameInfo.strikes}`}</span>
-            <div className='outs'>
-                {[...Array(3)].map((_, index) => (
-                    <div
-                        key={index}
-                        className='out'
-                        style={{ backgroundColor: !!gameInfo.outs && gameInfo.outs > index ? '#000000' : 'none' }}
-                    ></div>
-                ))}
-            </div>
+            {gameInfo.dueUp && <span className='dueUpHeader'>Due Up</span>}
+            {gameInfo.dueUp ?
+                <div className='dueUp'>
+                    {gameInfo.dueUp.map(player => (
+                        <span className='dueUpItem'>{player.shortName}</span>
+                    ))}
+                </div>
+                :
+                <>
+                    <img className='bases' src={getBase()} alt='bases' />
+                    <span className='count'>{`${gameInfo.balls} - ${gameInfo.strikes}`}</span>
+                    <div className='outs'>
+                        {[...Array(3)].map((_, index) => (
+                            <div
+                                key={index}
+                                className='out'
+                                style={{ backgroundColor: !!gameInfo.outs && gameInfo.outs > index ? '#000000' : 'none' }}
+                            ></div>
+                        ))}
+                    </div>
+                </>
+            }
         </div>
     )
 }
