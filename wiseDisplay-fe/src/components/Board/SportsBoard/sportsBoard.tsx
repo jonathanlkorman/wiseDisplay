@@ -1,118 +1,54 @@
-import React, { useState, useEffect, useRef, useCallback, FunctionComponent } from 'react';
-import { IApiGames } from '../../../../../wiseDisplay-api/interfaces/IApiGames';
-import { IPreferences } from '../../../../../wiseDisplay-api/interfaces/IApiPreferences';
+import React, { useState, useEffect, useRef, FunctionComponent } from 'react';
 import Game from './Game/game';
 import GameLoadingScreen from './Game/LoadingScreen/gameLoadingScreen';
+import useFetchGameData from '../../../hooks/useFetchGameData';
 
 interface SportsBoardProps {
-    preferences: any
+	preferences: any
 }
 
 const SportsBoard: FunctionComponent<SportsBoardProps> = ({ preferences }) => {
-    const [gameData, setGameData] = useState<IApiGames>({
-        preferredTeamsLive: false,
-        filteredGames: [],
-    });
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
-    const retryRef = useRef<NodeJS.Timeout | null>(null);
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const { gameData, loading, fetchGameData } = useFetchGameData(preferences); // 
+	const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-    const preloadImages = (urls: string[]) => {
-        urls.forEach(url => {
-            const img = new Image();
-            img.src = url;
-        });
-    };
+	useEffect(() => {
+		const startInterval = () => {
+			intervalRef.current = setInterval(() => {
+				setCurrentIndex((prevIndex) => {
+					const nextIndex = (prevIndex + 1) % gameData.filteredGames.length;
+					if (nextIndex === 0) {
+						fetchGameData();
+					}
+					return nextIndex;
+				});
+			}, 10000);
+		};
 
-    const formatRequestBody = (preferences: any): IPreferences => {
-        return {
-            liveOnly: preferences.liveOnly,
-            favTeamsOnly: preferences.favTeamsOnly,
-            leagues: preferences.leagues.map(
-                (option: { value: string, label: string }) => option.value),
-            favTeams: preferences.favTeams.map(
-                (option: { value: string, label: string }) => option.value),
-            dailyOnly: preferences.dailyOnly,
-            datetime: new Date().toISOString()
-        }
+		const stopInterval = () => {
+			if (intervalRef.current !== null) {
+				clearInterval(intervalRef.current as NodeJS.Timeout);
+			}
+		};
 
-    }
+		fetchGameData();
 
-    const fetchData = useCallback(async () => {
-        try {
+		if (gameData.filteredGames.length > 0 && !loading) {
+			startInterval();
+		}
 
-            const body = formatRequestBody(preferences);
-            const response = await fetch('https://wisedisplay-be.onrender.com/api/games/all', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            });
+		return () => {
+			stopInterval();
+		};
+	}, [fetchGameData, gameData.filteredGames.length, loading]);
 
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data: IApiGames = await response.json();
-            setGameData(data);
-            preloadImages(data.filteredGames.map(game => game.awayteam.logo));
-            preloadImages(data.filteredGames.map(game => game.hometeam.logo));
-            setLoading(false);
-            
-            if (retryRef.current !== null) {
-                clearTimeout(retryRef.current as NodeJS.Timeout);
-            }
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            retryRef.current = setTimeout(() => {
-                fetchData();
-            }, 30000);
-        }
-    }, [preferences]);
-
-    useEffect(() => {
-        const startInterval = () => {
-            intervalRef.current = setInterval(() => {
-                setCurrentIndex((prevIndex) => {
-                    const nextIndex = (prevIndex + 1) % gameData.filteredGames.length;
-                    if (nextIndex === 0) {
-                        fetchData();
-                    }
-                    return nextIndex;
-                });
-            }, 10000);
-        };
-
-        const stopInterval = () => {
-            if (intervalRef.current !== null) {
-                clearInterval(intervalRef.current as NodeJS.Timeout);
-            }
-        };
-
-        fetchData();
-
-        if (gameData.filteredGames.length > 0 && !loading) {
-            startInterval();
-        }
-
-        return () => {
-            stopInterval();
-        };
-    }, [fetchData, gameData.filteredGames.length, loading]);
-
-    if (loading) {
-        return <GameLoadingScreen />
-    }
-    if (gameData.filteredGames.length <= 0) {
-        return <p className='no-data'>No Games</p>;
-    }
-
-    return (
-        <Game gameData={gameData.filteredGames[currentIndex]} />
-    );
+	if (loading) {
+		return <GameLoadingScreen />
+	} else if (gameData.filteredGames.length <= 0) {
+		return <p className='no-data'>No Games</p>;
+	} else {
+		return <Game gameData={gameData.filteredGames[currentIndex]} />;
+	}
 };
 
 export default SportsBoard;
