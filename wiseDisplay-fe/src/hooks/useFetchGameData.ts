@@ -26,7 +26,7 @@ const useFetchGameData = (preferences: any) => {
 			leagues: leagues.map(({ value }: { value: string, label: string }) => value),
 			favTeams: favTeams.map(({ value }: { value: string, label: string }) => value),
 			dailyOnly,
-			datetime: new Date().toISOString().slice(0,10).replace(/\-/g, ''),
+			datetime: new Date().toISOString().slice(0,10).replace(/-/g, ''),
 		};
 	};
 
