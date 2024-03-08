@@ -17,7 +17,7 @@ export class GameController {
         try {
             const preferences: IPreferences = req.body;
              
-            const nflGames = await GameDAL.getNFLGames();
+            const nflGames = await GameDAL.getNFLGames(preferences);
 
             return res.status(200).json(IApiGameAdapter(nflGames, preferences));
         } catch (error) {
@@ -31,10 +31,10 @@ export class GameController {
             const preferences: IPreferences = req.body;
             
             const [nfl, nhl, nba, mlb] = await Promise.all([
-                GameDAL.getNFLGames(),
-                GameDAL.getNHLGames(),
-                GameDAL.getNBAGames(),
-                GameDAL.getMLBGames()
+                GameDAL.getNFLGames(preferences),
+                GameDAL.getNHLGames(preferences),
+                GameDAL.getNBAGames(preferences),
+                GameDAL.getMLBGames(preferences)
             ]);
 
             const games = [...nfl, ...nhl, ...nba, ...mlb];

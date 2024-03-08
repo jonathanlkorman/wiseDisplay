@@ -6,12 +6,18 @@ import { INHLGame } from "../schema/blueprints/INHLGame";
 import { NHLGame } from "../schema/models/NHLGame";
 import { IMLBGame } from "../schema/blueprints/IMLBGame";
 import { MLBGame } from "../schema/models/MLBGame";
+import { IPreferences } from "../../../wiseDisplay-api/interfaces/IApiPreferences";
+import { Util } from "../utils/Util";
 
+const NFL_API_BASE_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
+const NBA_API_BASE_URL = 'http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard';
+const NHL_API_BASE_URL = 'http://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard';
+const MLB_API_BASE_URL = 'http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard';
 export class GameDAL {
-    public static async getNFLGames(): Promise<NFLGame[]> {
+    public static async getNFLGames(preferences: IPreferences): Promise<NFLGame[]> {
         try {
         
-            const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard', {method: 'GET'});
+            const response = await fetch(`${NFL_API_BASE_URL}${Util.getRequestParameters(preferences)}`, {method: 'GET'});
             if(!response.ok){
                 throw new Error('Network response was not ok');
             }
@@ -73,9 +79,9 @@ export class GameDAL {
         
     }
 
-    public static async getNBAGames(): Promise<NBAGame[]> {
+    public static async getNBAGames(preferences: IPreferences): Promise<NBAGame[]> {
         try {
-            const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard', {method: 'GET'});
+            const response = await fetch(`${NBA_API_BASE_URL}${Util.getRequestParameters(preferences)}`, {method: 'GET'});
             if(!response.ok){
                 throw new Error('Network response was not ok');
             }
@@ -129,9 +135,9 @@ export class GameDAL {
         }
     }
 
-    public static async getNHLGames(): Promise<NHLGame[]> {
+    public static async getNHLGames(preferences: IPreferences): Promise<NHLGame[]> {
         try {
-            const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard', {method: 'GET'});
+            const response = await fetch(`${NHL_API_BASE_URL}${Util.getRequestParameters(preferences)}`, {method: 'GET'});
             if(!response.ok){
                 throw new Error('Network response was not ok');
             }
@@ -185,9 +191,9 @@ export class GameDAL {
         }
     }
 
-    public static async getMLBGames(): Promise<MLBGame[]> {
+    public static async getMLBGames(preferences: IPreferences): Promise<MLBGame[]> {
         try {
-            const response = await fetch('http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard', {method: 'GET'});
+            const response = await fetch(`${MLB_API_BASE_URL}${Util.getRequestParameters(preferences)}`, {method: 'GET'});
             if(!response.ok){
                 throw new Error('Network response was not ok');
             }
