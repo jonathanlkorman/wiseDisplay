@@ -45,23 +45,23 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
             };
         }
     }
-    if (gameData.state === 'pre') {
-        return (
-            <div className='game-info'>
-                <span className='game-day'>{displayDate(gameData.date).day}</span>
-                <span className='game-time'>{displayDate(gameData.date).time}</span>
-                {(gameData.odds.details && gameData.odds.overUnder !== undefined) &&
-                    <div className="gameOdds">
-                        <span className="oddsDetails">{gameData.odds.details}</span>
-                        <BsDot className='oddsDivider'/>
-                        <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
-                    </div>
-                }
-            </div>
-        );
+
+    if(gameData.isLive) {
+        switch (gameData.league) {
+            case 'NFL':
+                return <NFLInfo gameData={gameData} />;
+            case 'NHL':
+                return <NHLInfo gameData={gameData} />;
+            case 'NBA':
+                return <NBAInfo gameData={gameData} />;
+            case 'MLB':
+                return <MLBInfo gameData={gameData} />;
+            default:
+                return null;
+        }
     }
 
-    if (gameData.state === 'post') {
+    if(gameData.over) {
         return (
             <div className='game-info'>
                 <span className='game-status'>{gameData.detail}</span>
@@ -69,18 +69,19 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
         );
     }
 
-    switch (gameData.league) {
-        case 'NFL':
-            return <NFLInfo gameData={gameData} />;
-        case 'NHL':
-            return <NHLInfo gameData={gameData} />;
-        case 'NBA':
-            return <NBAInfo gameData={gameData} />;
-        case 'MLB':
-            return <MLBInfo gameData={gameData} />;
-        default:
-            return null;
-    }
+    return (
+        <div className='game-info'>
+            <span className='game-day'>{displayDate(gameData.date).day}</span>
+            <span className='game-time'>{displayDate(gameData.date).time}</span>
+            {(gameData.odds.details && gameData.odds.overUnder !== undefined) &&
+                <div className="gameOdds">
+                    <span className="oddsDetails">{gameData.odds.details}</span>
+                    <BsDot className='oddsDivider'/>
+                    <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
+                </div>
+            }
+        </div>
+    );  
 }
 
 export default GameInfo;
