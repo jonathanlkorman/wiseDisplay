@@ -50,7 +50,7 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
             <div className='game-info'>
                 <span className='game-day'>{displayDate(gameData.date).day}</span>
                 <span className='game-time'>{displayDate(gameData.date).time}</span>
-                {(gameData.odds.details && gameData.odds.overUnder) &&
+                {(gameData.odds.details && gameData.odds.overUnder !== undefined) &&
                     <div className="gameOdds">
                         <span className="oddsDetails">{gameData.odds.details}</span>
                         <BsDot className='oddsDivider'/>
