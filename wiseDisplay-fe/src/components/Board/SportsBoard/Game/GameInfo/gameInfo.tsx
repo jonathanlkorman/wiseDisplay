@@ -18,16 +18,20 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
         const currentDate: Date = new Date();
         const timestamp = Date.parse(date);
         const eventDate = new Date(timestamp);
-    
-        const eventDateString = eventDate.toLocaleString('en-US', {
+
+        const day = eventDate.toLocaleString('en-US', {
             timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             month: 'short',
             day: 'numeric',
+        });
+
+        const time = eventDate.toLocaleTimeString('en-US', {
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             hour: 'numeric',
             minute: 'numeric',
             hour12: true,
         });
-    
+
         if (
             eventDate.getFullYear() === currentDate.getFullYear() &&
             eventDate.getMonth() === currentDate.getMonth() &&
@@ -35,18 +39,17 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
         ) {
             return {
                 day: 'TODAY',
-                time: eventDateString.split(', ')[1] // Extract time
+                time,
             };
         } else {
-            const [day, time] = eventDateString.split(', ');
             return {
                 day,
-                time
+                time,
             };
         }
-    }
+    };
 
-    if(gameData.isLive) {
+    if (gameData.isLive) {
         switch (gameData.league) {
             case 'NFL':
                 return <NFLInfo gameData={gameData} />;
@@ -61,7 +64,7 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
         }
     }
 
-    if(gameData.over) {
+    if (gameData.over) {
         return (
             <div className='game-info'>
                 <span className='game-status'>{gameData.detail}</span>
@@ -76,12 +79,12 @@ const GameInfo: FunctionComponent<GameInfoData> = ({ gameData }) => {
             {(gameData.odds.details && gameData.odds.overUnder !== undefined) &&
                 <div className="gameOdds">
                     <span className="oddsDetails">{gameData.odds.details}</span>
-                    <BsDot className='oddsDivider'/>
+                    <BsDot className='oddsDivider' />
                     <span className="oddsOverUnder">{`O/U ${gameData.odds.overUnder}`}</span>
                 </div>
             }
         </div>
-    );  
+    );
 }
 
 export default GameInfo;
