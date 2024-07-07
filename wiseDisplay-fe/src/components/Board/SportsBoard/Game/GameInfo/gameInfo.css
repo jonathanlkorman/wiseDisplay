@@ -91,4 +91,6 @@
 
 .dueUpItem {
     font-size: 5vw;
+    white-space: nowrap;
+    overflow: hidden;
 }
