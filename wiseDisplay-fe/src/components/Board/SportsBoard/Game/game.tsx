@@ -25,21 +25,21 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
     );
 
     return (
-        <div className="gameCard">
-            <div className="gameHeader">
-                <div className="gameColorBar">
+        <div className="game-card">
+            <div className="game-header">
+                <div className="game-color-bar">
                     <div
-                        className="awayTeamColor teamColor"
+                        className="team-color team-color-away"
                         style={{ backgroundColor: `#${awayTeamColor ? awayTeamColor : 'e8efec'}` }}>
                     </div>
                     <div
-                        className="homeTeamColor teamColor"
+                        className="team-color team-color-home"
                         style={{ backgroundColor: `#${gameData.hometeam.color ? gameData.hometeam.color : 'e8efec'}` }}>
                     </div>
                 </div>
             </div>
-            <div className="gameSummary">
-                <div className="gameMatchup">
+            <div className="game-summary">
+                <div className="game-matchup">
                     <Team
                         teamData={gameData.awayteam}
                         state={gameData.state}
@@ -63,34 +63,32 @@ export default Game;
 
 
 const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator, winner }) => (
-    <div className='teamWrapper'>
-        <div className={`team ${teamIndicator}`}>
-            <div className="teamLogoWrapper">
-                <img className="teamLogo" src={teamData.logo} alt="teamLogo" />
-            </div>
-            <div className="teamInfoWrapper">
-                <div className="teamNameWrapper">
-                    <span className="teamName">{teamData.teamShortName}</span>
-                </div>
-                {state === 'pre' && (
-                    <div className='teamRecordWrapper'>
-                        <span className="teamRecord">{teamData.record}</span>
-                    </div>
-                )}
-            </div>
-            
+
+    <div className={`team ${teamIndicator}`}>
+        <div className="team-name-wrapper">
+            <span className="team-name">{teamData.teamShortName}</span>
         </div>
-        <div className={`scoreWrapper score${teamIndicator}`}>
-            {state !== 'pre' &&
+        <div className="team-logo-wrapper">
+            <img className="team-logo" src={teamData.logo} alt="team-logo" />
+        </div>
+
+        {state === 'pre' ?
+            <div className='team-record-wrapper'>
+                <span className="team-record">{teamData.record}</span>
+            </div>
+            :
+            <div className={`score-wrapper score${teamIndicator}`}>
                 <span className="score">{teamData.score}</span>
-            }
-            {state === "post" && winner && (
-                teamIndicator === "awayTeam" 
-                ?   <BsCaretLeftFill className="awayCaret" /> 
-                :   <BsCaretRightFill className="homeCaret" />
-            )}
-        </div>
+            </div>
+        }
+        {state === "post" && winner && (
+            teamIndicator === "awayTeam"
+                ? <BsCaretLeftFill className="caret caret-away" />
+                : <BsCaretRightFill className="caret caret-home" />
+        )}
     </div>
+
+
 );
 
 function getMostDifferentColor(mainColor: string, color1: string, color2: string): string {
