@@ -1,18 +1,26 @@
-.gameCard {
+.caret {
+    position: absolute;
+    bottom: 38%;
+    height: 8vw;
+    width: 8vw;
+}
+
+.caret-home {
+    right: 85%;
+}
+
+.caret-away {
+    left: 85%;
+}
+
+.game-card {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
 }
 
-.gameHeader {    
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 5%;
-}
-
-.gameColorBar {
+.game-color-bar {
     height: 100%;
     width: 100%;
     display: flex;
@@ -20,31 +28,14 @@
     position: relative;
 }
 
-.teamColor {
-    width: calc(50% + 4px);
-    height: 100%;
-    position: absolute;
-}
-
-.awayTeamColor {
-    -webkit-clip-path: polygon(0 0,calc(100% - 4px) 0,100% 100%,0 100%);
-    clip-path: polygon(0 0,calc(100% - 4px) 0,100% 100%,0 100%);
-    left: 0;
-}
-
-.homeTeamColor {
-    -webkit-clip-path: polygon(0 0,100% 0,100% 100%,4px 100%);
-    clip-path: polygon(0 0,100% 0,100% 100%,4px 100%);
-    right: 0;
-}
-
-.networkInfo {
+.game-header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 5%;
 }
 
-.gameSummary {
+.game-summary {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -52,111 +43,81 @@
     justify-content: space-around;
 }
 
-.gameMatchup {
+.game-matchup {
     display: flex;
     flex-direction: row;
     width: 100%;
     padding: 0 0.5rem
 }
 
-.teamWrapper {
-    display: flex;
-    flex-direction: row;
-    width: 35%;
-}
-
 .team {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    width: 70%;
-    height: 100%;
+    width: 30%;
 }
 
-.homeTeam {
-    order: 1;
-}
-
-.teamLogoWrapper {
-    height: 55%;
+.team-logo-wrapper {
+    height: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.teamLogo {
+.team-logo {
     height: 100%;
     width: 100%;
     object-fit: contain;
 }
 
-.teamInfoWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.teamNameWrapper {
+.team-name-wrapper {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.teamName {
+.team-name {
     width: 100%;
     font-size: 11vw;
     text-align: center;
 }
 
-.teamRecordWrapper {
+.team-color {
+    width: calc(50% + 4px);
+    height: 100%;
+    position: absolute;
+}
+
+.team-color-away {
+    -webkit-clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 100%, 0 100%);
+    left: 0;
+}
+
+.team-color-home {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 4px 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 4px 100%);
+    right: 0;
+}
+
+.score-wrapper,
+.team-record-wrapper {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.teamRecord {
+.team-record {
     font-size: 7vw;
     text-align: center;
-}
-
-.scoreWrapper {
-    width: 30%;
-    height: 75%;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
 }
 
 .score {
     font-size: 9vw;
     text-align: center;
-}
-
-.scoreawayTeam {
-    justify-content: flex-end;
-}
-
-.scorehomeTeam {
-    justify-content: flex-start;
-}
-
-.homeCaret {
-    position: absolute;
-    bottom: 8%;
-    right: 100%;
-    height: 8vw;
-    width: 8vw;
-}
-
-.awayCaret {
-    position: absolute;
-    bottom: 8%;
-    left: 100%;
-    height: 8vw;
-    width: 8vw;
 }
 

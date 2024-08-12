@@ -16,7 +16,7 @@ const NFLInfo: FunctionComponent<NFLInfoData> = ({ gameData }) => {
                 <>
                     <span className='quarter'>{gameInfo.quarter}</span>
                     <span className='time'>{gameData.time}</span>
-                    <span className='down-and-distance'>{gameInfo.down?.replace('&', '+')}</span>
+                    <span className='down-and-distance'>{gameInfo.down}</span>
                     <span className='spot'>{gameInfo.spot}</span>
                 </>
             ) : (
