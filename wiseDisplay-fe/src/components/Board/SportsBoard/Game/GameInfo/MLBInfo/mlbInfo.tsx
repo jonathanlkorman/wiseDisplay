@@ -1,16 +1,16 @@
 import React, { FunctionComponent } from 'react';
 
-import empty from '../../../../../assets/empty.svg'
-import first from '../../../../../assets/first.svg'
-import second from '../../../../../assets/second.svg'
-import third from '../../../../../assets/third.svg'
-import firstSecond from '../../../../../assets/first_second.svg'
-import secondThird from '../../../../../assets/second_third.svg'
-import firstThird from '../../../../../assets/first_third.svg'
-import loaded from '../../../../../assets/loaded.svg'
+import empty from '../../../../../../assets/empty.svg'
+import first from '../../../../../../assets/first.svg'
+import second from '../../../../../../assets/second.svg'
+import third from '../../../../../../assets/third.svg'
+import firstSecond from '../../../../../../assets/first_second.svg'
+import secondThird from '../../../../../../assets/second_third.svg'
+import firstThird from '../../../../../../assets/first_third.svg'
+import loaded from '../../../../../../assets/loaded.svg'
 
-import '../GameInfo/gameInfo.css';
-import { IApiGame, IApiMLBInfo } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
+import '../gameInfo.css'
+import { IApiGame, IApiMLBInfo } from '../../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 
 
 interface MLBInfoData {

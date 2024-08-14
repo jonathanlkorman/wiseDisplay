@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 
 import './gameInfo.css';
 import { IApiGame } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
-import NFLInfo from './nflInfo';
-import NHLInfo from './nhlInfo';
-import NBAInfo from './nbaInfo';
-import MLBInfo from './mlbInfo';
+import NFLInfo from './NFLInfo/nflInfo';
+import NHLInfo from './NHLInfo/nhlInfo';
+import NBAInfo from './NBAInfo/nbaInfo';
+import MLBInfo from './MLBInfo/mlbInfo';
 import { BsDot } from 'react-icons/bs';
 
 

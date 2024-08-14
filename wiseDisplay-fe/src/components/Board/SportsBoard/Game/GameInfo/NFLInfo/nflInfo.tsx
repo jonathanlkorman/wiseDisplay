@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 
-import '../GameInfo/gameInfo.css';
-import { IApiGame, IApiNFLInfo } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
+import '../gameInfo.css'
+import { IApiGame, IApiNFLInfo } from '../../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 import NFLPossession from './nflPossession';
+
 
 
 interface NFLInfoData {

@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
-import '../GameInfo/gameInfo.css';
-import { IApiGame, IApiNHLInfo } from '../../../../../../../wiseDisplay-api/interfaces/IApiGames';
+import '../gameInfo.css';
+
+import { IApiGame, IApiNHLInfo } from '../../../../../../../../wiseDisplay-api/interfaces/IApiGames';
 
 
 interface NHLInfoData {

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
-import { IApiGame, IApiNFLInfo } from "../../../../../../../wiseDisplay-api/interfaces/IApiGames";
+
+import { IApiGame, IApiNFLInfo } from "../../../../../../../../wiseDisplay-api/interfaces/IApiGames";
 import NFLPossessionIcon from "./nflPossessionIcon";
 
 interface IPossessionProps {
