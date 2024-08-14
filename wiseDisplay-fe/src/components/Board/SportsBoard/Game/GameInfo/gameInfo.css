@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .gameOdds {
@@ -153,4 +152,28 @@
     border-top: 2px solid #747373; 
     transform: rotate(28deg); 
     transform-origin: top left;
+}
+
+.timeouts {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 30%;
+    justify-content: center;
+}
+
+.timeouts-home {
+    right: 0%;
+}
+
+.timeouts-away {
+    left: 0;
+}
+
+.timeout {
+    height: 0.5vw;
+    width: 3vw;
+    background-color: black;
+    display: flex;
 }
