@@ -20,6 +20,8 @@ const NFLPossession: FunctionComponent<IPossessionProps> = ({ gameData }) => {
                     fieldGoal={false}
                     extraPoint={false}
                     redzone={!!gameInfo.redzone}
+                    missedExtraPoint={false}
+                    missedFieldGoal={false}
                 />
             </span>
         );

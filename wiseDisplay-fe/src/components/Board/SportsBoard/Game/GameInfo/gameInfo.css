@@ -135,3 +135,22 @@
     font-size: 2rem;
     border-radius: 8px;
 }
+
+.nfl-icon-points-missed {
+    background-color: #a2a2a2;
+    font-size: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.nfl-icon-points-missed::before {
+    content: '';
+    position: absolute;
+    top: 2.25px;
+    left: 2.25px;
+    width: 105%;
+    height: 105%;
+    border-top: 2px solid #747373; 
+    transform: rotate(28deg); 
+    transform-origin: top left;
+}
