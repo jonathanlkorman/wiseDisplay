@@ -110,15 +110,28 @@
     right: -13%;
 }
 
-.possession-icon {
-    border-radius: 50%;
-    background-color: #804818;
+.nfl-icon {
     color: #ffffff;
-    font-size: 0.5rem;
-    letter-spacing: -1px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
+}
+.nfl-icon-possession {
+    border-radius: 50%;
+    background-color: #804818;
+    font-size: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.nfl-icon-redzone {
+    background-color: #ff5256;
+    font-size: 2rem;
+    border-radius: 8px;
+}
+.nfl-icon-points {
+    background-color: #52b7ff;
+    font-size: 2rem;
+    border-radius: 8px;
 }
