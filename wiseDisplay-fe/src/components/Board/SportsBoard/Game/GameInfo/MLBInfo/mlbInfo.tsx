@@ -53,15 +53,8 @@ const MLBInfo: FunctionComponent<MLBInfoData> = ({ gameData }) => {
                 <>
                     <img className='bases' src={getBase()} alt='bases' />
                     <span className='count'>{`${gameInfo.balls} - ${gameInfo.strikes}`}</span>
-                    <div className='outs'>
-                        {[...Array(3)].map((_, index) => (
-                            <div
-                                key={index}
-                                className='out'
-                                style={{ backgroundColor: !!gameInfo.outs && gameInfo.outs > index ? '#000000' : 'none' }}
-                            ></div>
-                        ))}
-                    </div>
+                    <span className='outs'>{`${gameInfo.outs} out${gameInfo.outs !== 1 ? 's' : ''}`}</span>
+                    
                 </>
             }
         </div>

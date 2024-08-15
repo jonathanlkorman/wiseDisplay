@@ -52,24 +52,13 @@
     justify-content: space-between;
 }
 
-.inning,
-.count {
+.inning {
     font-size: 7vw;
 }
 
-.outs{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-}
-.out {
-    width: 5vw;
-    height: 5vw;
-    border-radius: 50%;
-    border: 3px solid black;
+.count,
+.outs {
+    font-size: 6vw;
 }
 
 .bases {
