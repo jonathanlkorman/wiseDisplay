@@ -5,9 +5,12 @@ import Board from '../Board/board';
 import { useLocalStorage } from '../DataStore/localstorage';
 import PreferencesModal from '../PreferencesModal/preferencesModal';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { useTheme } from '../../context/themeContext';
 
 
 const HomePage = () => {
+
+    const { theme } = useTheme();
 
     const [preferences, setPreferences] = useLocalStorage("preferences", {
         liveOnly: false,
@@ -29,7 +32,7 @@ const HomePage = () => {
 
     return (
         <div className='home-page-wrapper'>
-            <BsThreeDotsVertical className='pref' onClick={() => setShowModal(true)} />
+            <BsThreeDotsVertical className={`pref ${theme}`} onClick={() => setShowModal(true)} />
             {showModal 
             ?
                 <PreferencesModal

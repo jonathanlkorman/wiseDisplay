@@ -9,8 +9,18 @@ import secondThird from '../../../../../../assets/second_third.svg'
 import firstThird from '../../../../../../assets/first_third.svg'
 import loaded from '../../../../../../assets/loaded.svg'
 
+import darkEmpty from '../../../../../../assets/dark_empty.svg'
+import darkFirst from '../../../../../../assets/dark_first.svg'
+import darkSecond from '../../../../../../assets/dark_second.svg'
+import darkThird from '../../../../../../assets/dark_third.svg'
+import darkFirstSecond from '../../../../../../assets/dark_first_second.svg'
+import darkSecondThird from '../../../../../../assets/dark_second_third.svg'
+import darkFirstThird from '../../../../../../assets/dark_first_third.svg'
+import darkLoaded from '../../../../../../assets/dark_loaded.svg'
+
 import '../gameInfo.css'
 import { IApiGame, IApiMLBInfo } from '../../../../../../../../wiseDisplay-api/interfaces/IApiGames';
+import { useTheme } from '../../../../../../context/themeContext';
 
 
 interface MLBInfoData {
@@ -18,25 +28,27 @@ interface MLBInfoData {
 }
 
 const MLBInfo: FunctionComponent<MLBInfoData> = ({ gameData }) => {
+    const { theme } = useTheme();
+    const dark = theme === 'dark';
     const gameInfo = gameData.gameInfo as IApiMLBInfo;
 
     const getBase = () => {
         if (gameInfo.onFirst && gameInfo.onSecond && gameInfo.onThird)
-            return loaded;
+            return dark ? darkLoaded : loaded;
         else if (gameInfo.onFirst && gameInfo.onSecond && !gameInfo.onThird)
-            return firstSecond;
+            return dark ? darkFirstSecond : firstSecond;
         else if (gameInfo.onFirst && !gameInfo.onSecond && gameInfo.onThird)
-            return firstThird;
+            return dark ? darkFirstThird : firstThird;
         else if (!gameInfo.onFirst && gameInfo.onSecond && gameInfo.onThird)
-            return secondThird;
+            return dark ? darkSecondThird : secondThird;
         else if (!gameInfo.onFirst && !gameInfo.onSecond && gameInfo.onThird)
-            return third;
+            return dark ? darkThird : third;
         else if (!gameInfo.onFirst && gameInfo.onSecond && !gameInfo.onThird)
-            return second;
+            return dark ? darkSecond : second;
         else if (gameInfo.onFirst && !gameInfo.onSecond && !gameInfo.onThird)
-            return first;
+            return dark ? darkFirst : first;
         else
-            return empty;
+            return dark ? darkEmpty : empty;
     }
 
     return (
