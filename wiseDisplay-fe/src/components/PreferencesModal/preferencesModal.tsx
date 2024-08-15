@@ -6,6 +6,7 @@ import "./preferencesModal.css";
 import teamOptions from "../../assets/teamOptions.json";
 import leagueOptions from "../../assets/leagueOptions.json";
 import { useTheme } from "../../context/themeContext";
+import { BsX } from "react-icons/bs";
 
 const PreferencesModal: FunctionComponent<any> = ({ preferences, setPreferences, setShowModal }) => {
 	const { theme, toggleTheme } = useTheme();
@@ -28,6 +29,7 @@ const PreferencesModal: FunctionComponent<any> = ({ preferences, setPreferences,
 	return (
 		<div className="modal">
 			<div className="modal-content">
+				<BsX className="close-icon" onClick={handleClose}></BsX>
 				<h2>Welcome to wiseDisplay!</h2>
 				<p>Please set your preferences below:</p>
 				<form>
