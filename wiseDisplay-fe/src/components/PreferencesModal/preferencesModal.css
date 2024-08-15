@@ -12,6 +12,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.modal.dark {
+    background-color: #141414;
+    color: #fbfbfb;
+}
+
 .close-icon {
     height: 25px;
     width: 25px;
@@ -35,6 +40,10 @@ p {
     max-width: 600px;
     max-height: 90vh;
     overflow: scroll;
+}
+
+.modal-content.dark {
+    background-color: #000000;
 }
 
 .form-group {
@@ -70,4 +79,5 @@ button:hover {
 
 #favTeams, #leagues {
     max-width: 70%;
+    color: #000000;
 }

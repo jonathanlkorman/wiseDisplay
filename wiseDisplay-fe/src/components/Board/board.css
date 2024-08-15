@@ -5,4 +5,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #000000;
+}
+
+.board-wrapper.dark {
+    background-color: #000000;
+    color: #fbfbfb;
 }

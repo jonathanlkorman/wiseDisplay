@@ -27,8 +27,8 @@ const PreferencesModal: FunctionComponent<any> = ({ preferences, setPreferences,
 	};
 
 	return (
-		<div className="modal">
-			<div className="modal-content">
+		<div className={`modal ${theme}`}>
+			<div className={`modal-content ${theme}`}>
 				<BsX className="close-icon" onClick={handleClose}></BsX>
 				<h2>Welcome to wiseDisplay!</h2>
 				<p>Please set your preferences below:</p>
@@ -78,6 +78,7 @@ const PreferencesModal: FunctionComponent<any> = ({ preferences, setPreferences,
 							options={leagueOptions}
 							isMulti
 							onChange={(options: any) => handleSelectChange("leagues", options)}
+							className="select"
 						/>
 					</div>
 					<div className="form-group">

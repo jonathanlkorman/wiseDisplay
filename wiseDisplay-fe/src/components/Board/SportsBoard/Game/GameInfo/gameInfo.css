@@ -163,6 +163,10 @@
 .timeout {
     height: 0.5vw;
     width: 3vw;
-    background-color: black;
+    background-color: #000000;
     display: flex;
+}
+
+.timeout.dark {
+    background-color: #ffffff;
 }
