@@ -47,7 +47,7 @@ export class Game implements IGame {
         return this._awayteam;
     }
     public get time(): string {
-        if(this._time === '0:00'){
+        if(['0.00', '0.0'].indexOf(this._time) >= 0) {
             return "END"
         }
         return this._time;
