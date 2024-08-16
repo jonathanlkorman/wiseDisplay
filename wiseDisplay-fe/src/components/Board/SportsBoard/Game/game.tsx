@@ -5,6 +5,7 @@ import { BsCaretLeftFill, BsCaretRightFill } from 'react-icons/bs';
 import "./game.css"
 import { ITeam } from "../../../../../../wiseDisplay-be/src/schema/blueprints/IGame";
 import GameInfo from "./GameInfo/gameInfo";
+import { useTheme } from "../../../../context/themeContext";
 
 interface GameInfoData {
     gameData: IApiGame;
@@ -62,34 +63,34 @@ const Game: FunctionComponent<GameInfoData> = ({ gameData }) => {
 export default Game;
 
 
-const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator, winner }) => (
-
-    <div className={`team ${teamIndicator}`}>
-        <div className="team-name-wrapper">
-            <span className="team-name">{teamData.teamShortName}</span>
-        </div>
-        <div className="team-logo-wrapper">
-            <img className="team-logo" src={teamData.logo} alt="team-logo" />
-        </div>
-
-        {state === 'pre' ?
-            <div className='team-record-wrapper'>
-                <span className="team-record">{teamData.record}</span>
+const Team: FunctionComponent<TeamData> = ({ teamData, state, teamIndicator, winner }) => {
+    const { theme } = useTheme();
+    return (
+        <div className={`team ${teamIndicator}`}>
+            <div className="team-name-wrapper">
+                <span className="team-name">{teamData.teamShortName}</span>
             </div>
-            :
-            <div className={`score-wrapper score${teamIndicator}`}>
-                <span className="score">{teamData.score}</span>
+            <div className="team-logo-wrapper">
+                <img className={`team-logo ${theme}`} src={teamData.logo} alt="team-logo" />
             </div>
-        }
-        {state === "post" && winner && (
-            teamIndicator === "awayTeam"
-                ? <BsCaretLeftFill className="caret caret-away" />
-                : <BsCaretRightFill className="caret caret-home" />
-        )}
-    </div>
 
-
-);
+            {state === 'pre' ?
+                <div className='team-record-wrapper'>
+                    <span className="team-record">{teamData.record}</span>
+                </div>
+                :
+                <div className={`score-wrapper score${teamIndicator}`}>
+                    <span className="score">{teamData.score}</span>
+                </div>
+            }
+            {state === "post" && winner && (
+                teamIndicator === "awayTeam"
+                    ? <BsCaretLeftFill className="caret caret-away" />
+                    : <BsCaretRightFill className="caret caret-home" />
+            )}
+        </div>
+    )
+};
 
 function getMostDifferentColor(mainColor: string, color1: string, color2: string): string {
     if (!mainColor || !color1 || !color2) return "";

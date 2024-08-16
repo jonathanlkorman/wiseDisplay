@@ -72,6 +72,10 @@
     object-fit: contain;
 }
 
+.team-logo.dark {
+    filter: brightness(1.5);
+}
+
 .team-name-wrapper {
     width: 100%;
     height: 33%;
