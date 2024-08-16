@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
+import { useLocalStorage } from "../components/DataStore/localstorage";
 
 interface ThemeContextType {
 	theme: string;
@@ -20,10 +21,10 @@ interface IThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<IThemeProviderProps> = ({ children }) => {
-	const [theme, setTheme] = useState<string>('light');
+	const [theme, setTheme] = useLocalStorage('theme', 'light');
 
 	const toggleTheme = () => {
-		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+		setTheme((prevTheme: string) => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
 
 	return (
