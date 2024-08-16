@@ -8,6 +8,7 @@ import { IMLBGame } from "../schema/blueprints/IMLBGame";
 import { MLBGame } from "../schema/models/MLBGame";
 import { IPreferences } from "../../../wiseDisplay-api/interfaces/IApiPreferences";
 import { Util } from "../utils/Util";
+import { SituationDAL } from "./SituationDAL.class";
 
 const NFL_API_BASE_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
 const NBA_API_BASE_URL = 'http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard';
@@ -22,7 +23,19 @@ export class GameDAL {
                 throw new Error('Network response was not ok');
             }
             const data: any = await response.json();
-            
+
+            /**
+             * The following code is temporary, it is here to save all the 
+             * possible values returned from the ESPN NFL API so that we 
+             * have a better understanding of what we can do. Once we save
+             * all the id's we can remove this functionality.
+             */
+            try {
+                await SituationDAL.saveNFLSituations(data);
+            } catch(error) {
+                console.log("Error saving situation data");
+            }
+
             const league = data.leagues[0].abbreviation;
             const games: INFLGame[] = data.events.map((event: any) => {
                 const info = event.competitions[0];
