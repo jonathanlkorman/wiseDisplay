@@ -16,8 +16,8 @@ export class SituationDAL {
                 if (type && type?.id) {
                     const result = await this.addTypeIfNotExists({
                         id: type.id,
-                        text: type.text ?? "",
-                        abbreviation: type.abbreviation ?? ""
+                        text: type.text ?? "empty",
+                        abbreviation: type.abbreviation ?? "empty"
                     });
                             
 
