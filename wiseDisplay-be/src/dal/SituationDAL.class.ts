@@ -14,7 +14,14 @@ export class SituationDAL {
 
             try {
                 if (type && type?.id) {
-                    const result = await this.addTypeIfNotExists(type);
+                    const result = await this.addTypeIfNotExists({
+                        id: type.id,
+                        text: type.text ?? "",
+                        abbreviation: type.abbreviation ?? ""
+                    });
+                            
+
+
 
                     if (result.added) {
                         console.log('New type added:', JSON.stringify(result.type));
