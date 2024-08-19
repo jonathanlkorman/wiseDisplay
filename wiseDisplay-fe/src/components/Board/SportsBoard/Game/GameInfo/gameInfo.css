@@ -84,17 +84,17 @@
     overflow: hidden;
 }
 
-.possession {
+.nfl-icon-wrapper {
     height: 5.25vw;
     width: 9vw;
     position: absolute;
     bottom: 13%;
 }
 
-.possession-away {
+.nfl-icon-wrapper.away {
     left: 25%;
 }
-.possession-home {
+.nfl-icon-wrapper.home {
     right: 25%;
 }
 
@@ -106,32 +106,32 @@
     height: 100%;
     width: 100%;
 }
-.nfl-icon-possession {
+.nfl-icon.possession {
     border-radius: 50%;
     background-color: #804818;
     font-size: 0.5rem;
     letter-spacing: -1px;
 }
 
-.nfl-icon-redzone {
+.nfl-icon.redzone {
     background-color: #ff5256;
     font-size: 2rem;
     border-radius: 8px;
 }
-.nfl-icon-points {
+.nfl-icon.points {
     background-color: #52b7ff;
     font-size: 2rem;
     border-radius: 8px;
 }
 
-.nfl-icon-points-missed {
+.nfl-icon.points-missed {
     background-color: #a2a2a2;
     font-size: 2rem;
     border-radius: 8px;
     overflow: hidden;
 }
 
-.nfl-icon-points-missed::before {
+.nfl-icon.points-missed::before {
     content: '';
     position: absolute;
     top: 2.25px;

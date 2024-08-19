@@ -5,8 +5,7 @@ import { NFLGame } from "../schema/models/NFLGame";
 import { NBAGame } from "../schema/models/NBAGame";
 import { NHLGame } from "../schema/models/NHLGame";
 import { MLBGame } from "../schema/models/MLBGame";
-import { ESPN_NFL_PLAY } from "../schema/blueprints/INFLGame";
-import { NFL_PLAY } from "../../../wiseDisplay-api/interfaces/IApiNFLPlay";
+import { ESPN_NFL_PLAY, NFL_PLAY } from "../schema/blueprints/INFLGame";
 
 export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiGames => {
 

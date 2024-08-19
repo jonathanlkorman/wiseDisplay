@@ -1,6 +1,5 @@
 import { INFLGame } from "schema/blueprints/INFLGame";
 import { Game } from "./Game";
-import { NFL_PLAY } from "../../../../wiseDisplay-api/interfaces/IApiNFLPlay";
 
 export class NFLGame extends Game implements INFLGame {
     private _quarter: number;

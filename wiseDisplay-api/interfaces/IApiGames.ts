@@ -1,5 +1,5 @@
 import { IOdds, IPlayer, ITeam } from '../../wiseDisplay-be/src/schema/blueprints/IGame';
-import { NFL_PLAY } from './IApiNFLPlay';
+import { NFL_PLAY } from '../../wiseDisplay-be/src/schema/blueprints/INFLGame';
 
 export interface IApiGames {
     preferredTeamsLive: boolean,
