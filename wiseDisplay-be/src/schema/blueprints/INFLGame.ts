@@ -9,7 +9,7 @@ export interface INFLGame extends IGame {
     awayTimeouts: number | null,
     homeTimeouts: number | null,
     lastPlayId?: string;
-    lastPlayTeam?: string;
+    lastPlayTeamId?: string;
 }
 
 export enum ESPN_NFL_PLAY {

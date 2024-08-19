@@ -76,7 +76,7 @@ const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
             spot: game.spot,
             awayTimeouts: game.awayTimeouts,
             homeTimeouts: game.homeTimeouts,
-            lastPlay: adaptNFLPlay(game.lastPlayId, game.lastPlayTeam),
+            lastPlay: adaptNFLPlay(game.lastPlayId, game.lastPlayTeamId),
         }
     }
     else if (game instanceof MLBGame) {
@@ -128,39 +128,39 @@ const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
     }
 }
 
-const adaptNFLPlay = (lastPlayId: string, lastPlayTeam: string): IApiNFLPlay => {
+const adaptNFLPlay = (lastPlayId: string, lastPlayTeamId: string): IApiNFLPlay => {
     switch (lastPlayId) {
         case ESPN_NFL_PLAY.PASSING_TOUCHDOWN:
         case ESPN_NFL_PLAY.RUSHING_TOUCHDOWN:
         case ESPN_NFL_PLAY.INTERCEPTION_RETURN_TOUCHDOWN:
             return {
                 type: NFL_PLAY.TOUCHDOWN,
-                teamId: lastPlayTeam
+                teamId: lastPlayTeamId
             };
         case ESPN_NFL_PLAY.EXTRA_POINT_GOOD:
             return {
                 type: NFL_PLAY.EXTRA_POINT_GOOD,
-                teamId: lastPlayTeam
+                teamId: lastPlayTeamId
             };
         case ESPN_NFL_PLAY.EXTRA_POINT_MISSED:
             return {
                 type: NFL_PLAY.EXTRA_POINT_MISSED,
-                teamId: lastPlayTeam
+                teamId: lastPlayTeamId
             };
         case ESPN_NFL_PLAY.FIELD_GOAL_GOOD:
             return {
                 type: NFL_PLAY.FIELD_GOAL_GOOD,
-                teamId: lastPlayTeam
+                teamId: lastPlayTeamId
             };
         case ESPN_NFL_PLAY.FIELD_GOAL_MISSED:
             return {
                 type: NFL_PLAY.FIELD_GOAL_MISSED,
-                teamId: lastPlayTeam
+                teamId: lastPlayTeamId
             };
         case ESPN_NFL_PLAY.SAFETY:
             return {
                 type: NFL_PLAY.SAFETY,
-                teamId: lastPlayTeam
+                teamId: lastPlayTeamId
             };
         default:
             return null;
