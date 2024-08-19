@@ -1,26 +1,28 @@
 import { Game } from "../schema/models/Game";
 import { IPreferences } from "../../../wiseDisplay-api/interfaces/IApiPreferences";
-import { IApiGames, IApiGame, IApiGameInfo } from "../../../wiseDisplay-api/interfaces/IApiGames";
+import { IApiGames, IApiGame, IApiGameInfo, IApiNFLPlay } from "../../../wiseDisplay-api/interfaces/IApiGames";
 import { NFLGame } from "../schema/models/NFLGame";
 import { NBAGame } from "../schema/models/NBAGame";
 import { NHLGame } from "../schema/models/NHLGame";
 import { MLBGame } from "../schema/models/MLBGame";
+import { ESPN_NFL_PLAY } from "../schema/blueprints/INFLGame";
+import { NFL_PLAY } from "../../../wiseDisplay-api/interfaces/IApiNFLPlay";
 
 export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiGames => {
 
     const preferredTeamsLive: boolean = games
         .filter(game => game.includesFav(preferences.favTeams))
         .some(game => game.isLive);
-        
+
     const anyGamesLive: boolean = games
-    .filter(game => preferences.leagues.includes(game.league) || game.includesFav(preferences.favTeams))
-    .some(game => game.isLive);
+        .filter(game => preferences.leagues.includes(game.league) || game.includesFav(preferences.favTeams))
+        .some(game => game.isLive);
 
     const filteredGames: IApiGame[] = games
         .filter(game => (preferences.liveOnly && anyGamesLive) ? game.isLive : true)
         .filter(game => preferences.leagues.includes(game.league) || game.includesFav(preferences.favTeams))
         .filter(game => (preferences.favTeamsOnly && preferredTeamsLive) ? game.includesFav(preferences.favTeams) && game.isLive : true)
-        .map(game =>({
+        .map(game => ({
             league: game.league,
             name: game.name,
             date: game.date,
@@ -34,7 +36,7 @@ export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiG
                 altcolor: game.hometeam.altcolor,
                 record: game.hometeam.record
             },
-            awayteam:{
+            awayteam: {
                 teamShortName: game.awayteam.teamShortName,
                 teamFullName: game.awayteam.teamFullName,
                 id: game.awayteam.id,
@@ -55,7 +57,7 @@ export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiG
                 spread: game.odds.spread
             },
             halftime: game.halftime,
-            gameInfo: IApiGameInfoAdapter(game),          
+            gameInfo: IApiGameInfoAdapter(game),
         }));
 
     return {
@@ -66,18 +68,19 @@ export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiG
 
 
 const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
-    if(game instanceof NFLGame) {
+    if (game instanceof NFLGame) {
         return {
             quarter: game.displayQuarter,
             possession: game.possession,
             redzone: game.redzone,
-            down: game.down, 
+            down: game.down,
             spot: game.spot,
             awayTimeouts: game.awayTimeouts,
-            homeTimeouts: game.homeTimeouts
+            homeTimeouts: game.homeTimeouts,
+            lastPlay: adaptNFLPlay(game.lastPlayId, game.lastPlayTeam),
         }
-    } 
-    else if(game instanceof MLBGame) {
+    }
+    else if (game instanceof MLBGame) {
         return {
             inning: game.inning,
             outs: game.outs,
@@ -114,14 +117,53 @@ const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
             })
         }
     }
-    else if(game instanceof NBAGame) {
+    else if (game instanceof NBAGame) {
         return {
             quarter: game.displayQuarter
         }
     }
-    else if(game instanceof NHLGame) {
-        return { 
-            period: game.displayPeriod 
+    else if (game instanceof NHLGame) {
+        return {
+            period: game.displayPeriod
         }
+    }
+}
+
+const adaptNFLPlay = (lastPlayId: string, lastPlayTeam: string): IApiNFLPlay => {
+    switch (lastPlayId) {
+        case ESPN_NFL_PLAY.PASSING_TOUCHDOWN:
+        case ESPN_NFL_PLAY.RUSHING_TOUCHDOWN:
+        case ESPN_NFL_PLAY.INTERCEPTION_RETURN_TOUCHDOWN:
+            return {
+                type: NFL_PLAY.TOUCHDOWN,
+                teamId: lastPlayTeam
+            };
+        case ESPN_NFL_PLAY.EXTRA_POINT_GOOD:
+            return {
+                type: NFL_PLAY.EXTRA_POINT_GOOD,
+                teamId: lastPlayTeam
+            };
+        case ESPN_NFL_PLAY.EXTRA_POINT_MISSED:
+            return {
+                type: NFL_PLAY.EXTRA_POINT_MISSED,
+                teamId: lastPlayTeam
+            };
+        case ESPN_NFL_PLAY.FIELD_GOAL_GOOD:
+            return {
+                type: NFL_PLAY.FIELD_GOAL_GOOD,
+                teamId: lastPlayTeam
+            };
+        case ESPN_NFL_PLAY.FIELD_GOAL_MISSED:
+            return {
+                type: NFL_PLAY.FIELD_GOAL_MISSED,
+                teamId: lastPlayTeam
+            };
+        case ESPN_NFL_PLAY.SAFETY:
+            return {
+                type: NFL_PLAY.SAFETY,
+                teamId: lastPlayTeam
+            };
+        default:
+            return null;
     }
 }
