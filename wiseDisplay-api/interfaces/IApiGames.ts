@@ -1,4 +1,5 @@
 import { IOdds, IPlayer, ITeam } from '../../wiseDisplay-be/src/schema/blueprints/IGame';
+import { NFL_PLAY } from '../../wiseDisplay-be/src/schema/blueprints/INFLGame';
 
 export interface IApiGames {
     preferredTeamsLive: boolean,
@@ -29,6 +30,7 @@ export interface IApiNFLInfo {
     spot: string | null,
     awayTimeouts: number | null, 
     homeTimeouts: number | null,
+    lastPlay?: IApiNFLPlay,
 }
 
 export interface IApiMLBInfo {
@@ -42,6 +44,11 @@ export interface IApiMLBInfo {
     pitcher: IPlayer | null;
     batter: IPlayer | null;
     dueUp: IPlayer[] | null;
+}
+
+export interface IApiNFLPlay {
+    type: NFL_PLAY;
+    teamId: string;
 }
 
 export interface IApiNBAInfo {

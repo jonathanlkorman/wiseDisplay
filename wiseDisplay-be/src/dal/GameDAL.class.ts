@@ -80,7 +80,9 @@ export class GameDAL {
                     down: info?.situation?.shortDownDistanceText, 
                     spot: info?.situation?.possessionText,
                     redzone: info?.situation?.isRedZone, 
-                    possession: info?.situation?.possession, 
+                    possession: info?.situation?.possession,
+                    lastPlayId: info?.situation?.lastPlay?.type?.id, 
+                    lastPlayTeamId: info?.situation?.lastPlay?.team?.id,
                 }
                 return game;
             });
