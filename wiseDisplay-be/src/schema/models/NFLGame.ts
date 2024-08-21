@@ -1,6 +1,6 @@
 import { $enum } from "ts-enum-util";
 
-import { ESPN_NFL_PLAY, INFLGame } from "schema/blueprints/INFLGame";
+import { ESPN_NFL_PLAY, INFLGame } from "../blueprints/INFLGame";
 import { Game } from "./Game";
 
 export class NFLGame extends Game implements INFLGame {
