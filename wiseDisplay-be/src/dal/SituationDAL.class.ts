@@ -20,13 +20,8 @@ export class SituationDAL {
                         abbreviation: type.abbreviation ?? "empty"
                     });
                             
-
-
-
                     if (result.added) {
                         console.log('New type added:', JSON.stringify(result.type));
-                    } else {
-                        console.log('Type already exists');
                     }
                 }
             } catch (error) {
