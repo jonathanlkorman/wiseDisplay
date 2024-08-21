@@ -5,7 +5,7 @@ import { NFLGame } from "../schema/models/NFLGame";
 import { NBAGame } from "../schema/models/NBAGame";
 import { NHLGame } from "../schema/models/NHLGame";
 import { MLBGame } from "../schema/models/MLBGame";
-import { ESPN_NFL_PLAY, NFL_PLAY } from "../schema/blueprints/INFLGame";
+import { ESPN_NFL_PLAY, NFL_PLAY, playMappings } from "../schema/blueprints/INFLGame";
 
 export const IApiGameAdapter = (games: Game[], preferences: IPreferences): IApiGames => {
 
@@ -76,7 +76,7 @@ const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
             spot: game.spot,
             awayTimeouts: game.awayTimeouts,
             homeTimeouts: game.homeTimeouts,
-            lastPlay: adaptNFLPlay(game.lastPlayId, game.lastPlayTeamId),
+            lastPlay: adaptNFLPlay(game.lastPlay, game.lastPlayTeamId, game.lastPlayScoreValue),
         }
     }
     else if (game instanceof MLBGame) {
@@ -128,41 +128,31 @@ const IApiGameInfoAdapter = (game: Game): IApiGameInfo => {
     }
 }
 
-const adaptNFLPlay = (lastPlayId: string, lastPlayTeamId: string): IApiNFLPlay => {
-    switch (lastPlayId) {
-        case ESPN_NFL_PLAY.PASSING_TOUCHDOWN:
-        case ESPN_NFL_PLAY.RUSHING_TOUCHDOWN:
-        case ESPN_NFL_PLAY.INTERCEPTION_RETURN_TOUCHDOWN:
-            return {
-                type: NFL_PLAY.TOUCHDOWN,
-                teamId: lastPlayTeamId
-            };
-        case ESPN_NFL_PLAY.EXTRA_POINT_GOOD:
-            return {
-                type: NFL_PLAY.EXTRA_POINT_GOOD,
-                teamId: lastPlayTeamId
-            };
-        case ESPN_NFL_PLAY.EXTRA_POINT_MISSED:
-            return {
-                type: NFL_PLAY.EXTRA_POINT_MISSED,
-                teamId: lastPlayTeamId
-            };
-        case ESPN_NFL_PLAY.FIELD_GOAL_GOOD:
-            return {
-                type: NFL_PLAY.FIELD_GOAL_GOOD,
-                teamId: lastPlayTeamId
-            };
-        case ESPN_NFL_PLAY.FIELD_GOAL_MISSED:
-            return {
-                type: NFL_PLAY.FIELD_GOAL_MISSED,
-                teamId: lastPlayTeamId
-            };
-        case ESPN_NFL_PLAY.SAFETY:
-            return {
-                type: NFL_PLAY.SAFETY,
-                teamId: lastPlayTeamId
-            };
-        default:
-            return null;
+const adaptNFLPlay = (
+    lastPlay: ESPN_NFL_PLAY,
+    lastPlayTeamId: string,
+    lastPlayScoreValue: number
+): IApiNFLPlay | null => {
+    const mappedPlay = playMappings[lastPlay];
+    
+    if (mappedPlay) {
+      return { type: mappedPlay, teamId: lastPlayTeamId };
     }
-}
+  
+    if (lastPlay === ESPN_NFL_PLAY.TWO_POINT_PASS || lastPlay === ESPN_NFL_PLAY.TWO_POINT_RUSH) {
+      return adaptTwoPointPlay(lastPlayScoreValue, lastPlayTeamId);
+    }
+  
+    return null;
+};
+
+const adaptTwoPointPlay = (scoreValue: number, teamId: string): IApiNFLPlay | null => {
+    switch (scoreValue) {
+      case 2:
+        return { type: NFL_PLAY.TWO_POINT_GOOD, teamId };
+      case 0:
+        return { type: NFL_PLAY.TWO_POINT_MISS, teamId };
+      default:
+        return null;
+    }
+};

@@ -83,6 +83,7 @@ export class GameDAL {
                     possession: info?.situation?.possession,
                     lastPlayId: info?.situation?.lastPlay?.type?.id, 
                     lastPlayTeamId: info?.situation?.lastPlay?.team?.id,
+                    lastPlayScoreValue: info?.situation?.lastPlay?.scoreValue,
                 }
                 return game;
             });

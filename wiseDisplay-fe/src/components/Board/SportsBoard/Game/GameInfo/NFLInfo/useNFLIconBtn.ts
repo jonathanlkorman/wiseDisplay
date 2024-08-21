@@ -13,6 +13,8 @@ export enum NFL_PLAY {
     FIELD_GOAL_MISSED = "FIELD_GOAL_MISSED",
     EXTRA_POINT_GOOD = "EXTRA_POINT_GOOD",
     EXTRA_POINT_MISSED = "EXTRA_POINT_MISSED",
+    TWO_POINT_GOOD = "TWO_POINT_GOOD",
+    TWO_POINT_MISS = "TWO_POINT_MISS",
     SAFETY = "SAFETY",
 
 }
@@ -29,6 +31,8 @@ export function useNFLIconBtn(gameData: IApiGame): BtnType | null {
         [NFL_PLAY.TOUCHDOWN]: { text: "TD", iconClassName: "points", wrapperClassName },
         [NFL_PLAY.EXTRA_POINT_GOOD]: { text: "XP", iconClassName: "points", wrapperClassName },
         [NFL_PLAY.FIELD_GOAL_GOOD]: { text: "FG", iconClassName: "points", wrapperClassName },
+        [NFL_PLAY.TWO_POINT_GOOD]: { text: "2PT", iconClassName: "points", wrapperClassName },
+        [NFL_PLAY.TWO_POINT_MISS]: { text: "2PT", iconClassName: "points-missed", wrapperClassName },
         [NFL_PLAY.EXTRA_POINT_MISSED]: { text: "XP", iconClassName: "points-missed", wrapperClassName },
         [NFL_PLAY.FIELD_GOAL_MISSED]: { text: "FG", iconClassName: "points-missed", wrapperClassName },
         [NFL_PLAY.SAFETY]: { text: "SAF", iconClassName: "points", wrapperClassName },

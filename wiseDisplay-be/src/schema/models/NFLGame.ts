@@ -1,4 +1,6 @@
-import { INFLGame } from "schema/blueprints/INFLGame";
+import { $enum } from "ts-enum-util";
+
+import { ESPN_NFL_PLAY, INFLGame } from "schema/blueprints/INFLGame";
 import { Game } from "./Game";
 
 export class NFLGame extends Game implements INFLGame {
@@ -11,6 +13,7 @@ export class NFLGame extends Game implements INFLGame {
     private _homeTimeouts: number | null;
     private _lastPlayId: string | null;
     private _lastPlayTeamId: string | null;
+    private _lastPlayScoreValue: number | null;
 
     constructor(data: INFLGame) {
         super(data),
@@ -21,8 +24,9 @@ export class NFLGame extends Game implements INFLGame {
             this._spot = data?.spot,
             this._awayTimeouts = data?.awayTimeouts,
             this._homeTimeouts = data?.homeTimeouts
-        this._lastPlayId = data?.lastPlayId;
-        this._lastPlayTeamId = data?.lastPlayTeamId;
+            this._lastPlayId = data?.lastPlayId;
+            this._lastPlayTeamId = data?.lastPlayTeamId;
+            this._lastPlayScoreValue = data?.lastPlayScoreValue
     }
 
     public get quarter(): number {
@@ -46,11 +50,14 @@ export class NFLGame extends Game implements INFLGame {
     public get homeTimeouts(): number | null {
         return this._homeTimeouts ?? null;
     }
-    public get lastPlayId(): string {
-        return this._lastPlayId ?? null;
+    public get lastPlay(): ESPN_NFL_PLAY {
+        return $enum(ESPN_NFL_PLAY).getValueOrDefault(this._lastPlayId, null);
     }
     public get lastPlayTeamId(): string {
         return this._lastPlayTeamId ?? null;
+    }
+    public get lastPlayScoreValue(): number {
+        return this._lastPlayScoreValue ?? null;
     }
     public get displayQuarter(): string {
         const ORDINAL = ['Pre', '1st', '2nd', '3rd', '4th', 'OT'];
