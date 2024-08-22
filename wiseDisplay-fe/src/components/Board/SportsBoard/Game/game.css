@@ -1,16 +1,18 @@
 .caret {
     position: absolute;
-    bottom: 43%;
+    top: 50%;
     height: 8vw;
     width: 8vw;
 }
 
 .caret-home {
-    right: 85%;
+    left: 0;
+    transform: translate(-75%, -50%);
 }
 
 .caret-away {
-    left: 85%;
+    right: 0;
+    transform: translate(75%, -50%);
 }
 
 .game-card {
@@ -84,7 +86,8 @@
     justify-content: center;
 }
 
-.team-name {
+.team-name,
+.score {
     width: 100%;
     font-size: 11vw;
     text-align: center;
@@ -119,11 +122,6 @@
 
 .team-record {
     font-size: 7vw;
-    text-align: center;
-}
-
-.score {
-    font-size: 11vw;
     text-align: center;
 }
 

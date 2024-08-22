@@ -54,9 +54,9 @@ const MLBInfo: FunctionComponent<MLBInfoData> = ({ gameData }) => {
     return (
         <div className='game-info'>
             <span className='inning'>{gameInfo.inning}</span>
-            {gameInfo.dueUp && <span className='dueUpHeader'>Due Up</span>}
             {gameInfo.dueUp ?
                 <div className='dueUp'>
+                    <span className='dueUpHeader'>Due Up</span>
                     {gameInfo.dueUp.map(player => (
                         <span className='dueUpItem'>{player.shortName}</span>
                     ))}

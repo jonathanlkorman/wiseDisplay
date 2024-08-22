@@ -14,6 +14,7 @@
     justify-content: center;
     position: absolute;
     bottom: 0;
+    transform: translateY(50%);
 }
 
 .oddsOverUnder, .oddsDetails {
@@ -24,19 +25,13 @@
     width: 6vw;
 }
 
-.game-status {
-    font-size: 12vw;
-}
-
-.game-time {
-    font-size: 10vw;
-}
-
+.game-time,
 .game-date {
     font-size: 10vw;
 }
 
-.game-day {
+.game-day,
+.game-status {
     font-size: 12vw;
 }
 
@@ -70,7 +65,7 @@
     flex-direction: column;
     text-align: left;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     align-items: center;
 }
 
