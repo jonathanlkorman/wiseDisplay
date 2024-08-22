@@ -19,21 +19,21 @@ const GameLoadingScreen = () => {
                         <span className='game-time' style={{ width: '100%' }}>
                             <ThemedSkeleton borderRadius='0.25rem' height='8vw' />
                         </span>
+                        <div className="gameOdds" style={{ marginBottom: '0.5%' }}>
+                            <span className="oddsDetails" style={{ width: '20%', padding: '1rem' }}>
+                                <ThemedSkeleton borderRadius='0.25rem' height='5vw' />
+                            </span>
+                            <span
+                                style={{ width: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                            >
+                                <ThemedSkeleton circle width={10} height={10} />
+                            </span>
+                            <span className="oddsOverUnder" style={{ width: '20%', padding: '1rem' }}>
+                                <ThemedSkeleton borderRadius='0.25rem' height='5vw' />
+                            </span>
+                        </div>
                     </div>
                     <TeamLoading />
-                </div>
-                <div className="gameOdds" style={{ marginBottom: '0.5%' }}>
-                    <span className="oddsDetails" style={{ width: '20%', padding: '1rem' }}>
-                        <ThemedSkeleton borderRadius='0.25rem' height='5vw' />
-                    </span>
-                    <span
-                        style={{ width: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                    >
-                        <ThemedSkeleton circle width={10} height={10} />
-                    </span>
-                    <span className="oddsOverUnder" style={{ width: '20%', padding: '1rem' }}>
-                        <ThemedSkeleton borderRadius='0.25rem' height='5vw' />
-                    </span>
                 </div>
             </div>
         </div>
