@@ -84,14 +84,16 @@
     height: 5.25vw;
     width: 9vw;
     position: absolute;
-    bottom: 13%;
+    bottom: 16.5%;
 }
 
 .nfl-icon-wrapper.away {
-    left: 25%;
+    left: 30%;
+    transform: translate(-50%, 50%);
 }
 .nfl-icon-wrapper.home {
-    right: 25%;
+    right: 30%;
+    transform: translate(50%, 50%);
 }
 
 .nfl-icon {
