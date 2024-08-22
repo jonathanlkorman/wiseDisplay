@@ -128,3 +128,18 @@
     text-align: center;
 }
 
+@media (max-aspect-ratio: 4/5) {
+    .game-matchup {
+        height: 70%;
+    }
+}
+@media (max-aspect-ratio: 5/7) {
+    .game-matchup {
+        height: 60%;
+    }
+}
+@media (max-aspect-ratio: 9/16) {
+    .game-matchup {
+        height: 40%;
+    }
+}
