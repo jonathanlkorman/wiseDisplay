@@ -107,24 +107,24 @@
 .nfl-icon.possession {
     border-radius: 50%;
     background-color: #804818;
-    font-size: 0.5rem;
+    font-size: 1.2vw;
     letter-spacing: -1px;
 }
 
 .nfl-icon.redzone {
     background-color: #ff5256;
-    font-size: 2rem;
+    font-size: 5vw;
     border-radius: 8px;
 }
 .nfl-icon.points {
     background-color: #52b7ff;
-    font-size: 2rem;
+    font-size: 5vw;
     border-radius: 8px;
 }
 
 .nfl-icon.points-missed {
     background-color: #a2a2a2;
-    font-size: 2rem;
+    font-size: 5vw;
     border-radius: 8px;
     overflow: hidden;
 }
