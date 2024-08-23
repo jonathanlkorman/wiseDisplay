@@ -51,7 +51,8 @@ export class NFLGame extends Game implements INFLGame {
         return this._homeTimeouts ?? null;
     }
     public get lastPlay(): ESPN_NFL_PLAY {
-        return $enum(ESPN_NFL_PLAY).getValueOrDefault(this._lastPlayId, null);
+        const key = $enum(ESPN_NFL_PLAY).getKeyOrDefault(this._lastPlayId, null);
+        return key ? ESPN_NFL_PLAY[key as keyof typeof ESPN_NFL_PLAY] : null;
     }
     public get lastPlayTeamId(): string {
         return this._lastPlayTeamId ?? null;
