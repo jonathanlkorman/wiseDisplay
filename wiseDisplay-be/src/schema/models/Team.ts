@@ -1,6 +1,7 @@
 import { ITeam } from "schema/blueprints/IGame";
 
 export class Team implements ITeam {
+    private static readonly DEFAULT_RECORD = "0-0";
     private _teamShortName: string;
     private _teamFullName: string;
     private _id: string;
@@ -42,7 +43,7 @@ export class Team implements ITeam {
     public get altcolor(): string {
         return this._altcolor;
     }
-    public get record(): string | undefined {
-        return this._record;
+    public get record(): string {
+        return this._record ?? Team.DEFAULT_RECORD;
     }
 }
